@@ -35,6 +35,7 @@ module.exports = {
 		port: 3000,
 		open: true,
 	},
+	cache: false,
 
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -68,7 +69,7 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						cacheDirectory: true,
+						cacheDirectory: false,
 					},
 				},
 			},
