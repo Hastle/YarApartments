@@ -15,7 +15,7 @@ function App() {
 			<Review />
 			<Footer />
 
-	</>
+		</>
 	);
 }
 
