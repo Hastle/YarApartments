@@ -8,7 +8,12 @@ function Header() {
 	return (
 		<>
 
-			<Parallax bgImage={top_bg} strength={500}  bgImageStyle={{width: '100%', height: 'auto', overflow: 'hidden', minHeight: '100vh', objectFit: 'cover'}}>
+			<Parallax 
+				bgImage={top_bg}
+				strength={500}
+				bgImageStyle={
+					{width: '100%', height: 'auto', overflow: 'hidden', minHeight: '100vh', objectFit: 'cover', left: 'calc(50% - 1px)'
+			}}>
 
 			<header id="main" className="top-header">
 				<div className="container">
@@ -40,8 +45,8 @@ function Header() {
 							<option value="2">Фрунзенский</option>
 						</select>
 						<select>
-							<option value="1">Вариант 1</option>
-							<option value="2">Вариант 2</option>
+							<option value="1">Этаж 1</option>
+							<option value="2">Этаж 2</option>
 						</select>
 					</div>
 				</div>
