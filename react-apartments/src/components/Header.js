@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import top_bg from '../img/top-bg.jpg';
+import { Parallax, Background } from 'react-parallax';
+import top_bg from '../img/top-bg.jpg'
+
+
 
 function Header() {
 	return (
 		<>
 
-			<header id="main" className="top-header parallax-container" data-position="bottom center" data-parallax="scroll" data-speed="0.2" data-image-src={top_bg}>
+			<Parallax bgImage={top_bg} strength={500}  bgImageStyle={{width: '100%', height: 'auto', overflow: 'hidden', minHeight: '100vh', objectFit: 'cover'}}>
+
+			<header id="main" className="top-header">
 				<div className="container">
 					<div className="top-navigation">
 						<a href="#" className="logo">YarApartments.</a>
@@ -41,6 +46,10 @@ function Header() {
 					</div>
 				</div>
 			</header>
+
+			</Parallax>
+
+
 
 		</>
 	);
