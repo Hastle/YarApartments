@@ -11,9 +11,15 @@ function Header() {
 			<Parallax 
 				bgImage={top_bg}
 				strength={500}
-				bgImageStyle={
-					{width: '100%', height: 'auto', overflow: 'hidden', minHeight: '100vh', objectFit: 'cover', left: 'calc(50% - 1px)'
-			}}>
+				bgImageStyle={{
+					width: '100%', 
+					height: 'auto', 
+					overflow: 'hidden', 
+					minHeight: '100vh', 
+					objectFit: 'cover', 
+					left: 'calc(50% - 1px)'
+				}}
+			>
 
 			<header id="main" className="top-header">
 				<div className="container">
