@@ -1,7 +1,49 @@
 import React, { Component } from 'react';
+import TinySlider from 'tiny-slider-react';
+import 'tiny-slider/dist/tiny-slider.css';
 import apartment_1 from '../img/apartment-1.jpg';
 import apartment_2 from '../img/apartment-2.jpg';
 import apartment_3 from '../img/apartment-3.jpg';
+
+const imgStyles = {
+	width: "100%",
+	height: "320px",
+	objectFit: "cover"
+};
+
+const imgs = [
+	'assets/2a8ba7d861f356e0e208.jpg',
+	'assets/9ee6b075dc5ba2363b24.jpg',
+	'assets/a4173530183add16f35b.jpg',
+	'assets/9ee6b075dc5ba2363b24.jpg',
+	'assets/2a8ba7d861f356e0e208.jpg',
+	'assets/a4173530183add16f35b.jpg'
+];
+
+const loadingImage =
+"data:image/gif/jpg;base64";
+
+const settings = {
+	lazyload: true,
+	nav: false,
+	mouseDrag: true,
+	loop: true,
+	items: 3,
+	speed: 700,
+	arrowKeys: true,
+	mouseDrag: true,
+	autoplay: false,
+	swipeAngle: true,
+	controls: true,
+	slideBy: 'page',
+	gutter: 5,
+	preventActionWhenRunning: true,
+	responsive: {
+		420: {
+			items: 3
+		}
+	}
+};
 
 function Review() {
 	return (
@@ -14,6 +56,19 @@ function Review() {
 							<h3>Отзывы клиентов</h3>
 						</div>
 					</div>
+					<TinySlider settings={settings}>
+						{imgs.map((el, index) => (
+							<div key={index} style={{ position: "relative" }}>
+								<img
+									className={`tns-lazy-img`}
+									src={loadingImage}
+									data-src={el}
+									alt=""
+									style={imgStyles}
+								/>
+							</div>
+						))}
+					</TinySlider>
 					<div className="slider-container">
 						<div className="slider">
 							<div className="review-item">
