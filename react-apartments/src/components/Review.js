@@ -6,8 +6,8 @@ import apartment_2 from '../img/apartment-2.jpg';
 import apartment_3 from '../img/apartment-3.jpg';
 
 const imgStyles = {
-	width: "100%",
-	height: "320px",
+	maxWidth: "100%",
+	height: "auto",
 	objectFit: "cover"
 };
 
@@ -23,9 +23,26 @@ const imgs = [
 const loadingImage =
 "data:image/gif/jpg;base64";
 
+const PreviousBtn = (props) => {
+	const {className, onClick} = props;
+	return (
+		<button type="button" className={className} onClick={onClick}><i className="fa fa-arrow-left"></i></button>
+	)
+};
+
+// const NextBtn = (props) => {
+// 	const {className, onClick} = props;
+// 	return (
+// 		<button type="button" className={className} onClick={onClick}><i className="fa fa-arrow-right"></i></button>
+// 	)
+// };
+
 const settings = {
 	lazyload: true,
 	nav: false,
+	navPosition: 'bottom',
+	prevButton: '.PreviousBtn',
+	nextButton: '.NextBtn',
 	mouseDrag: true,
 	loop: true,
 	items: 3,
@@ -39,8 +56,17 @@ const settings = {
 	gutter: 5,
 	preventActionWhenRunning: true,
 	responsive: {
-		420: {
+		1200: {
 			items: 3
+		},
+		992: {
+			items: 2
+		},
+		768: {
+			items: 1
+		},
+		480: {
+			items: 1
 		}
 	}
 };
@@ -58,7 +84,7 @@ function Review() {
 					</div>
 					<TinySlider settings={settings}>
 						{imgs.map((el, index) => (
-							<div key={index} style={{ position: "relative" }}>
+							<div className="review-item" key={index} style={{ position: "relative" }}>
 								<img
 									className={`tns-lazy-img`}
 									src={loadingImage}
@@ -66,33 +92,6 @@ function Review() {
 									alt=""
 									style={imgStyles}
 								/>
-							</div>
-						))}
-					</TinySlider>
-					<div className="slider-container">
-						<div className="slider">
-							<div className="review-item">
-								<img src={apartment_1} alt=""/>
-								<div className="review-item-body">
-									<h4>2-комн. квартира, 70 м²</h4>
-									<p><span>Мария</span></p>
-									<p>23.11.2022</p>
-									<p>Неоднократно пользовалась услугами агенства, почти каждые выходные на машине приезжаю в Ярославль отдохнуть. Большой выбор чистых и уютных квартир, цены ниже гостиничных в два раза.
-									</p>
-								</div>
-							</div>
-							<div className="review-item">
-								<img src={apartment_2} alt=""/>
-								<div className="review-item-body">
-									<h4>2-комн. квартира, 70 м²</h4>
-									<p><span>Екатерина</span></p>
-									<p>12.08.2022</p>
-									<p>Неоднократно пользовалась услугами агенства, почти каждые выходные на машине приезжаю в Ярославль отдохнуть. Большой выбор чистых и уютных квартир, цены ниже гостиничных в два раза.
-									</p>
-								</div>
-							</div>
-							<div className="review-item">
-								<img src={apartment_3} alt=""/>
 								<div className="review-item-body">
 									<h4>2-комн. квартира, 70 м²</h4>
 									<p><span>Татьяна</span></p>
@@ -101,40 +100,13 @@ function Review() {
 									</p>
 								</div>
 							</div>
-							<div className="review-item">
-								<img src={apartment_2} alt=""/>
-								<div className="review-item-body">
-									<h4>2-комн. квартира, 70 м²</h4>
-									<p><span>Полина</span></p>
-									<p>13.04.2022</p>
-									<p>Неоднократно пользовалась услугами агенства, почти каждые выходные на машине приезжаю в Ярославль отдохнуть. Большой выбор чистых и уютных квартир, цены ниже гостиничных в два раза.
-									</p>
-								</div>
-							</div>
-							<div className="review-item">
-								<img src={apartment_3} alt=""/>
-								<div className="review-item-body">
-									<h4>2-комн. квартира, 70 м²</h4>
-									<p><span>Светлана</span></p>
-									<p>29.02.2022</p>
-									<p>Неоднократно пользовалась услугами агенства, почти каждые выходные на машине приезжаю в Ярославль отдохнуть. Большой выбор чистых и уютных квартир, цены ниже гостиничных в два раза.
-									</p>
-								</div>
-							</div>
-							<div className="review-item">
-								<img src={apartment_1} alt=""/>
-								<div className="review-item-body">
-									<h4>2-комн. квартира, 70 м²</h4>
-									<p><span>Елена</span></p>
-									<p>23.10.2022</p>
-									<p>Неоднократно пользовалась услугами агенства, почти каждые выходные на машине приезжаю в Ярославль отдохнуть. Большой выбор чистых и уютных квартир, цены ниже гостиничных в два раза.
-									</p>
-								</div>
-							</div>
-						</div>
-						<button type="button" className="slider-prev"><i className="fa fa-arrow-left"></i></button>
-						<button type="button" className="slider-next"><i className="fa fa-arrow-right"></i></button>
+						))}
+					</TinySlider>
+					<div className="sliderContainer">
+						<button type="button" className="PreviousBtn"><i className="fa fa-arrow-left"></i></button>
+						<button type="button" className="NextBtn"><i className="fa fa-arrow-right"></i></button>
 					</div>
+					
 				</div>
 			</section>
 
