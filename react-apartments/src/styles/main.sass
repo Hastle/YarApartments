@@ -224,21 +224,22 @@ p
 #reviews
 	background-color: $light
 
-	.slider-container
+	.sliderContainer
 		position: relative
 	%slider-buttons-shared
+		cursor: pointer
 		position: absolute
 		padding: 0
-		top: 50%
+		top: -50%
 		padding: 5px
 		transform: translate(0,-50%)
 		cursor: pointer
 		font-size: 23px
 		color: $black
-	.slider-prev
+	.PreviousBtn
 		@extend %slider-buttons-shared
 		left: -60px
-	.slider-next
+	.NextBtn
 		@extend %slider-buttons-shared
 		right: -60px
 	.review-item
