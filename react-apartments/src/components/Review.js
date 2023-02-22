@@ -48,7 +48,6 @@ const settings = {
 	items: 3,
 	speed: 700,
 	arrowKeys: true,
-	mouseDrag: true,
 	autoplay: false,
 	swipeAngle: true,
 	controls: true,
