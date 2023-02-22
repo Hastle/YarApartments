@@ -12,12 +12,11 @@ function Header() {
 				bgImage={top_bg}
 				strength={500}
 				bgImageStyle={{
-					width: '100%', 
-					height: 'auto', 
-					overflow: 'hidden', 
+					width: '100%',
+					height: 'auto',
 					minHeight: '100vh', 
 					objectFit: 'cover', 
-					left: 'calc(50% - 1px)'
+					left: '50%'
 				}}
 			>
 
