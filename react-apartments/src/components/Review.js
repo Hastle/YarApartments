@@ -40,9 +40,7 @@ const PreviousBtn = (props) => {
 const settings = {
 	lazyload: true,
 	nav: false,
-	navPosition: 'bottom',
-	prevButton: '.PreviousBtn',
-	nextButton: '.NextBtn',
+	controlsContainer: '.sliderContainer',
 	mouseDrag: true,
 	loop: true,
 	items: 3,
@@ -81,6 +79,7 @@ function Review() {
 							<h3>Отзывы клиентов</h3>
 						</div>
 					</div>
+					<div className="sliderContainer">
 					<TinySlider settings={settings}>
 						{imgs.map((el, index) => (
 							<div className="review-item" key={index} style={{ position: "relative" }}>
@@ -101,11 +100,9 @@ function Review() {
 							</div>
 						))}
 					</TinySlider>
-					<div className="sliderContainer">
 						<button type="button" className="PreviousBtn"><i className="fa fa-arrow-left"></i></button>
 						<button type="button" className="NextBtn"><i className="fa fa-arrow-right"></i></button>
 					</div>
-					
 				</div>
 			</section>
 
