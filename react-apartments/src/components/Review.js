@@ -82,32 +82,31 @@ function Review() {
 						</div>
 					</div>
 					<div className="sliderContainer">
-					<TinySlider settings={settings}>
-						{imgs.map((el, index) => (
-							<div className="review-item" key={index} style={{ position: "relative" }}>
-								<img
-									className={`tns-lazy-img`}
-									src={loadingImage}
-									data-src={el}
-									alt=""
-									style={imgStyles}
-								/>
-								<div className="review-item-body">
-									<h4>2-комн. квартира, 70 м²</h4>
-									<p><span>Татьяна</span></p>
-									<p>02.01.2023</p>
-									<p>Неоднократно пользовалась услугами агенства, почти каждые выходные на машине приезжаю в Ярославль отдохнуть. Большой выбор чистых и уютных квартир, цены ниже гостиничных в два раза.
-									</p>
+						<TinySlider settings={settings}>
+							{imgs.map((el, index) => (
+								<div className="review-item" key={index} style={{ position: "relative" }}>
+									<img
+										className={`tns-lazy-img`}
+										src={loadingImage}
+										data-src={el}
+										alt=""
+										style={imgStyles}
+									/>
+									<div className="review-item-body">
+										<h4>2-комн. квартира, 70 м²</h4>
+										<p><span>Татьяна</span></p>
+										<p>02.01.2023</p>
+										<p>Неоднократно пользовалась услугами агенства, почти каждые выходные на машине приезжаю в Ярославль отдохнуть. Большой выбор чистых и уютных квартир, цены ниже гостиничных в два раза.
+										</p>
+									</div>
 								</div>
-							</div>
-						))}
-					</TinySlider>
+							))}
+						</TinySlider>
 						<button type="button" className="PreviousBtn"><i className="fa fa-arrow-left"></i></button>
 						<button type="button" className="NextBtn"><i className="fa fa-arrow-right"></i></button>
 					</div>
 				</div>
 			</section>
-
 		</>
 	);
 }
