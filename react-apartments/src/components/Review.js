@@ -41,6 +41,8 @@ const settings = {
 	lazyload: true,
 	nav: false,
 	controlsContainer: '.sliderContainer',
+	prevButton: '.PreviousBtn',
+	nextButton: '.NextBtn',
 	mouseDrag: true,
 	loop: true,
 	items: 3,
