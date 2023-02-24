@@ -220,19 +220,18 @@ p
 		&:last-child
 			a
 				color: $acent
-/*==========  Reviews  ==========*/				
+/*==========  Reviews  ==========*/
+#tns1 > .tns-item
+	padding-right: 0
 #reviews
 	background-color: $light
-
 	.sliderContainer
 		position: relative
 	%slider-buttons-shared
 		cursor: pointer
 		position: absolute
-		padding: 0
-		top: -50%
 		padding: 5px
-		transform: translate(0,-50%)
+		top: 50%
 		cursor: pointer
 		font-size: 23px
 		color: $black
