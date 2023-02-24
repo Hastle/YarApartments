@@ -23,12 +23,12 @@ const imgs = [
 const loadingImage =
 "data:image/gif/jpg;base64";
 
-const PreviousBtn = (props) => {
-	const {className, onClick} = props;
-	return (
-		<button type="button" className={className} onClick={onClick}><i className="fa fa-arrow-left"></i></button>
-	)
-};
+// const PreviousBtn = (props) => {
+// 	const {className, onClick} = props;
+// 	return (
+// 		<button type="button" className={className} onClick={onClick}><i className="fa fa-arrow-left"></i></button>
+// 	)
+// };
 
 // const NextBtn = (props) => {
 // 	const {className, onClick} = props;
