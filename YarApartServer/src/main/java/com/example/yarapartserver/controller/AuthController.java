@@ -1,5 +1,6 @@
 package com.example.yarapartserver.controller;
 
+import com.example.yarapartserver.dto.LogInDto;
 import com.example.yarapartserver.dto.RegistrationDto;
 import com.example.yarapartserver.entity.Role;
 import com.example.yarapartserver.entity.User;
@@ -11,6 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +35,7 @@ public class AuthController {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @PostMapping("/registration")
+    @PostMapping("/signup")
     public ResponseEntity<String> registration(
             @RequestBody RegistrationDto registrationDto) {
 
@@ -52,9 +56,16 @@ public class AuthController {
         return new ResponseEntity<>("User was added", HttpStatus.CREATED);
     }
 
+    @PostMapping("/signin")
+    public ResponseEntity<String> logIn(@RequestBody LogInDto logInDto) {
 
-//    private Role addRole(String roleName){
-//        return roleRepository.findByRole(roleName).orElseThrow(
-//                ()->new IllegalArgumentException("Incorrect role name"));
-//    }
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(logInDto.getUserName(),
+                        logInDto.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        return new ResponseEntity<>("User singed success", HttpStatus.OK);
+    }
+
+
 }
