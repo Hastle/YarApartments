@@ -1,9 +1,9 @@
-package com.example.yarapartserver.dto;
+package com.example.yarapartserver.dto.request;
 
 import lombok.Data;
 
 @Data
-public class RegistrationDto {
+public class LogInDto {
 
     private String userName;
     private String password;
