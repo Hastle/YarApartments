@@ -29,7 +29,7 @@ import java.util.Set;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/")
+@RequestMapping("/auth")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
