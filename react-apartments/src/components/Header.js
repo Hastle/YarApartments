@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Parallax } from 'react-parallax';
-import top_bg from '../img/top-bg.jpg'
+import top_bg from '../img/top-bg.jpg';
 
 
 
