@@ -1,7 +1,9 @@
 package com.example.yarapartserver.controller;
 
-import com.example.yarapartserver.dto.LogInDto;
-import com.example.yarapartserver.dto.RegistrationDto;
+import com.example.yarapartserver.config.securityConfig.JwtGenerator;
+import com.example.yarapartserver.dto.request.LogInDto;
+import com.example.yarapartserver.dto.request.RegistrationDto;
+import com.example.yarapartserver.dto.response.JwtResponse;
 import com.example.yarapartserver.entity.Role;
 import com.example.yarapartserver.entity.User;
 import com.example.yarapartserver.entity.enums.Erole;
@@ -27,16 +29,17 @@ import java.util.Set;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/")
+@RequestMapping("/auth")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtGenerator jwtGenerator;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> registration(
+    public ResponseEntity<?> registration(
             @RequestBody RegistrationDto registrationDto) {
 
         if (userRepository.existsByUserName(registrationDto.getUserName())) {
@@ -57,14 +60,15 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    public ResponseEntity<String> logIn(@RequestBody LogInDto logInDto) {
+    public ResponseEntity<?> authenticateUser(@RequestBody LogInDto logInDto) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(logInDto.getUserName(),
                         logInDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt = jwtGenerator.generateToken(authentication);
 
-        return new ResponseEntity<>("User singed success", HttpStatus.OK);
+        return ResponseEntity.ok(new JwtResponse(jwt));
     }
 
 

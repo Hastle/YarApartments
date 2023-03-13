@@ -24,6 +24,7 @@ public class JwtGenerator {
         Date currentDate = new Date();
         Date expireDate = new Date(currentDate.getTime() + jwtExpiration);
 
+        log.info("Generate token");
         return Jwts.builder()
                 .setSubject(userName)
                 .setIssuedAt(new Date())
@@ -46,6 +47,7 @@ public class JwtGenerator {
         try {
             Jwts.parser().setSigningKey(jwtSecret)
                     .parseClaimsJws(token);
+            log.info("Validate token");
             return true;
         } catch (SignatureException e) {
             log.error("Invalid JWT signature: {}", e.getMessage());
