@@ -33,21 +33,16 @@ public class JwtGenerator {
                 .compact();
     }
 
-    public String getUserNameFromJWT(String token) {
+    public String getUserNameFromJwtToken(String token) {
 
-        Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
-                .parseClaimsJws(token)
-                .getBody();
-        return claims.getSubject();
+        return Jwts.parser().setSigningKey(jwtSecret).
+                parseClaimsJws(token).getBody().getSubject();
     }
 
-    public boolean validateToken(String token) {
 
+    public boolean validateToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret)
-                    .parseClaimsJws(token);
-            log.info("Validate token");
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
             log.error("Invalid JWT signature: {}", e.getMessage());
@@ -60,6 +55,7 @@ public class JwtGenerator {
         } catch (IllegalArgumentException e) {
             log.error("JWT claims string is empty: {}", e.getMessage());
         }
+
         return false;
     }
 

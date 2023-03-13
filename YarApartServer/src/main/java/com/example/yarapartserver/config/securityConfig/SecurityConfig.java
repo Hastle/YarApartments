@@ -21,7 +21,6 @@ public class SecurityConfig {
 
     private final CustomUserDetails customUserDetails;
     private final JwtAuthEntryPoint jwtAuthEntryPoint;
-    private final AuthTokenFilter authTokenFilter;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -37,12 +36,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/test/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+                .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());
-        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
@@ -68,6 +65,12 @@ public class SecurityConfig {
         authProvider.setPasswordEncoder(passwordEncoder());
 
         return authProvider;
+    }
+
+    @Bean
+    public AuthTokenFilter authTokenFilter() {
+
+        return new AuthTokenFilter();
     }
 
 
