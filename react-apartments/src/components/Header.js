@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Parallax } from 'react-parallax';
 import top_bg from '../img/top-bg.jpg';
-
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Login from '../pages/Login';
 
 
 function Header() {
@@ -23,7 +24,7 @@ function Header() {
 			<header id="main" className="top-header">
 				<div className="container">
 					<div className="top-navigation">
-						<a href="#" className="logo">YarApartments.</a>
+						<Link className="logo" to='/'>YarApartments.</Link>
 						<div className="main-menu">
 							<ul>
 								<li><a className="menu-item scroll" href="#main">Главная</a></li>
@@ -31,7 +32,7 @@ function Header() {
 								<li><a className="menu-item scroll" href="#about">О нас</a></li>
 								<li><a className="menu-item scroll" href="#contacts">Контакты</a></li>
 							</ul>
-							<a className="primary-btn" href="#">Личный кабинет</a>
+							<Link className="primary-btn" to='/login'>Личный кабинет</Link>
 						</div>
 					</div>
 				</div>

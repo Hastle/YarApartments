@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import Header from '../components/header';
-import Apartments from '../components/apartments';
-import About from '../components/about';
-import Review from '../components/review';
-import Footer from '../components/footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainPage from '../pages/MainPage';
+import Login from '../pages/Login';
 
 function App() {
 	return (
 		<>
-
-			<Header />
-			<Apartments />
-			<About />
-			<Review />
-			<Footer />
+			
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<MainPage />}/>
+					<Route path="/login" element={<Login />}/>
+				</Routes>
+			</BrowserRouter>
 
 		</>
 	);
