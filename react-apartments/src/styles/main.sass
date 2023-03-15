@@ -33,7 +33,7 @@ input, textarea
 	text-decoration: none
 	outline: none
 	outline-style: none
-	border: none
+	font-size: 16px
 button
 	background-color: transparent
 	outline-style: none
@@ -77,6 +77,9 @@ section, footer
 	&:hover
 		background-color: #eb1c0f
 		+box-shadow
+		+flow
+	&:focus
+		background-color: $acent
 		+flow
 h3
 	+regular
@@ -306,6 +309,24 @@ footer
 	justify-content: center
 	align-items: center
 	height: 100vh
+	background-color: pink
 	width: 100%
+	text-align: center
+	h2
+		margin: 0
+	form
+		margin: 0 auto
+		display: flex
+		flex-direction: column
+		text-align: center
+		
+	input
+		display: inline-block
+		margin-top: 15px
+		padding: 10px 15px
+	button
+		display: inline-block
+		margin: 15px auto
+		width: 150px
 /*==========  Media  ==========*/
 @import "media"
