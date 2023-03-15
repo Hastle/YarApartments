@@ -50,7 +50,7 @@ public class AuthController {
         createUser.setUserName(registrationDto.getUserName());
         createUser.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
         Set<Role> newRoles = new HashSet<>();
-        Role userRole = roleRepository.findByRole(Erole.USER)
+        Role userRole = roleRepository.findByRole(Erole.ROLE_USER)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
         newRoles.add(userRole);
         createUser.setRoles(newRoles);
