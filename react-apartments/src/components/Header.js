@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Parallax } from 'react-parallax';
 import top_bg from '../img/top-bg.jpg';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Login from '../pages/Login';
+import { Link } from 'react-router-dom';
 
 
 function Header() {
