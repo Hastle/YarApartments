@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { redirect } from 'react-router-dom';
+
+const apiUrl = 'https://cb71-2a00-1fa0-44da-6794-4850-636-8112-c67f.eu.ngrok.io/auth/signup';
 
 export default class Login extends React.Component {
 	state = {
@@ -22,7 +25,7 @@ export default class Login extends React.Component {
 			password: this.state.password
 		};
 
-		axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+		axios.post(apiUrl, user)
 		.then(res => {
 			//console.log(res);
 			console.log(res.data);
