@@ -18,14 +18,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -42,6 +40,7 @@ public class AuthController {
     public ResponseEntity<?> registration(
             @RequestBody RegistrationDto registrationDto) {
 
+        log.info("Start registr");
         if (userRepository.existsByUserName(registrationDto.getUserName())) {
             return new ResponseEntity<>("Already exist", HttpStatus.BAD_REQUEST);
         }
@@ -56,6 +55,7 @@ public class AuthController {
         createUser.setRoles(newRoles);
 
         userRepository.save(createUser);
+        log.info("End registr");
         return new ResponseEntity<>("User was added", HttpStatus.CREATED);
     }
 

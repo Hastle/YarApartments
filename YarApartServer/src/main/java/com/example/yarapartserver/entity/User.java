@@ -10,6 +10,7 @@ import org.hibernate.Hibernate;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -41,6 +42,10 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @Column(name = "tokens")
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokenList;
 
 
     @Override

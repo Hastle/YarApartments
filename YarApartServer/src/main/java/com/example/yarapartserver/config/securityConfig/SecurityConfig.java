@@ -35,8 +35,8 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests().requestMatchers("/auth/**").permitAll()
-                .and()
-                .authorizeHttpRequests().requestMatchers("/test/admin").permitAll()
+                .requestMatchers("/test/**").permitAll()
+                .requestMatchers("/noauth/**").permitAll()
                 .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());
