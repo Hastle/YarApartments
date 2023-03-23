@@ -2,26 +2,16 @@ package com.example.yarapartserver.controller;
 
 import com.example.yarapartserver.config.securityConfig.JwtGenerator;
 import com.example.yarapartserver.dto.request.LogInDto;
-import com.example.yarapartserver.dto.request.RegistrationDto;
-import com.example.yarapartserver.dto.response.JwtResponse;
-import com.example.yarapartserver.entity.Role;
-import com.example.yarapartserver.entity.User;
-import com.example.yarapartserver.entity.enums.Erole;
 import com.example.yarapartserver.repository.RoleRepository;
 import com.example.yarapartserver.repository.UserRepository;
+import com.example.yarapartserver.service.seviceInterface.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
@@ -36,39 +26,23 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final JwtGenerator jwtGenerator;
 
+    private final AuthenticationService authenticationService;
+
     @PostMapping("/signup")
-    public ResponseEntity<?> registration(
-            @RequestBody RegistrationDto registrationDto) {
+    public ResponseEntity<?> signUp(
+            @RequestBody LogInDto registrationDto) {
 
-        log.info("Start registr");
-        if (userRepository.existsByUserName(registrationDto.getUserName())) {
+        var jwtResponse = authenticationService.registration(registrationDto);
+
+        if (jwtResponse == null) {
             return new ResponseEntity<>("Already exist", HttpStatus.BAD_REQUEST);
-        }
-
-        User createUser = new User();
-        createUser.setUserName(registrationDto.getUserName());
-        createUser.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
-        Set<Role> newRoles = new HashSet<>();
-        Role userRole = roleRepository.findByRole(Erole.ROLE_USER)
-                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-        newRoles.add(userRole);
-        createUser.setRoles(newRoles);
-
-        userRepository.save(createUser);
-        log.info("End registr");
-        return new ResponseEntity<>("User was added", HttpStatus.CREATED);
+        } else return new ResponseEntity<>(jwtResponse, HttpStatus.CREATED);
     }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LogInDto logInDto) {
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(logInDto.getUserName(),
-                        logInDto.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtGenerator.generateToken(authentication);
-
-        return ResponseEntity.ok(new JwtResponse(jwt));
+        return ResponseEntity.ok(authenticationService.authentication(logInDto));
     }
 
 

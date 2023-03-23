@@ -1,5 +1,6 @@
 package com.example.yarapartserver.config.securityConfig;
 
+import com.example.yarapartserver.repository.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,6 +25,8 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     private JwtGenerator jwtGenerator;
     @Autowired
     private CustomUserDetails customUserDetails;
+    @Autowired
+    private TokenRepository tokenRepository;
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
@@ -33,7 +36,11 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
         try {
             String jwt = parseJwt(request);
-            if (jwt != null && jwtGenerator.validateToken(jwt)) {
+            var isTokenValid = tokenRepository.findByToken(jwt)
+                    .map(t -> (!t.isExpired()) && (!t.isRevoked()))
+                    .orElse(false);
+
+            if (jwt != null && jwtGenerator.validateToken(jwt) && isTokenValid) {
                 String userName = jwtGenerator.getUserNameFromJwtToken(jwt);
 
                 UserDetails userDetails = customUserDetails.loadUserByUsername(userName);
@@ -56,7 +63,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
     }
 
-    private String parseJwt(HttpServletRequest request) {
+    public String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
 
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
