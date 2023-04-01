@@ -49,7 +49,6 @@ public class User {
 
     @Column(name = "tokens")
     @OneToMany(mappedBy = "user")
-    @ToString.Exclude
     private List<Token> tokenList;
 
 

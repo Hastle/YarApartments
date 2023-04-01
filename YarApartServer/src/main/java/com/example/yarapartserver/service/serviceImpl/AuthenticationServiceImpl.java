@@ -3,6 +3,7 @@ package com.example.yarapartserver.service.serviceImpl;
 import com.example.yarapartserver.config.securityConfig.AuthTokenFilter;
 import com.example.yarapartserver.config.securityConfig.JwtGenerator;
 import com.example.yarapartserver.dto.request.LogInDto;
+import com.example.yarapartserver.dto.request.RegistrationDto;
 import com.example.yarapartserver.dto.response.JwtResponse;
 import com.example.yarapartserver.entity.Role;
 import com.example.yarapartserver.entity.Token;
@@ -42,16 +43,20 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Transactional
     @Override
-    public JwtResponse registration(LogInDto registrationDto) {
+    public JwtResponse registration(RegistrationDto registrationDto) {
 
         log.info("Start registr");
         if (userRepository.existsByUserName(registrationDto.getUserName())) {
+            return null;
+        }
+        if (userRepository.existsByEmail(registrationDto.getEmail())) {
             return null;
         }
 
         User createUser = new User();
         createUser.setUserName(registrationDto.getUserName());
         createUser.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
+        createUser.setEmail(registrationDto.getEmail());
         Set<Role> newRoles = new HashSet<>();
         Role userRole = roleRepository.findByRole(Erole.ROLE_USER)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
@@ -59,10 +64,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         createUser.setRoles(newRoles);
 
         var savedUser = userRepository.save(createUser);
-        var jwtToken = authentication(registrationDto).getToken();
-        //saveUserToken(savedUser,jwtToken);
+
+        var logInDto = LogInDto.builder()
+                .userName(registrationDto.getUserName())
+                .password(registrationDto.getPassword())
+                .build();
+
+        var jwtToken = authentication(logInDto).getToken();
         log.info("End registr");
-        return new JwtResponse(jwtToken);
+
+        return new JwtResponse(jwtToken, savedUser.getUserName());
     }
 
     @Override
@@ -79,7 +90,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         revokeAllUserTokens(user);
         saveUserToken(user, jwt);
 
-        return new JwtResponse(jwt);
+        return new JwtResponse(jwt, user.getUserName());
     }
 
     private void saveUserToken(User user, String jwtToken) {

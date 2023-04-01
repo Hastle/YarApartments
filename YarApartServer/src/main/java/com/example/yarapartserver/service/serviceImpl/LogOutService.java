@@ -35,5 +35,6 @@ public class LogOutService implements LogoutHandler {
             SecurityContextHolder.clearContext();
         }
 
+        log.info("LogOut complete");
     }
 }
