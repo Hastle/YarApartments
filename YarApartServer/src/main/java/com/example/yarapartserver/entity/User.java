@@ -29,6 +29,10 @@ public class User {
 
     @Column(unique = true)
     private String userName;
+
+    @Column(unique = true)
+    private String email;
+
     private String password;
     private LocalDateTime dateOfCreated;
 
@@ -45,6 +49,7 @@ public class User {
 
     @Column(name = "tokens")
     @OneToMany(mappedBy = "user")
+    @ToString.Exclude
     private List<Token> tokenList;
 
 
