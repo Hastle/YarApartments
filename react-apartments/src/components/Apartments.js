@@ -70,5 +70,4 @@ function Apartments() {
 		</>
 	);
 }
-
 export default Apartments;
