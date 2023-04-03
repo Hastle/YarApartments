@@ -37,6 +37,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests().requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/test/**").permitAll()
                 .requestMatchers("/noauth/**").permitAll()
+                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/v3/api-docs/**").permitAll()
                 .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());
