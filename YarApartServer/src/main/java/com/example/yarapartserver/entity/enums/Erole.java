@@ -1,7 +1,8 @@
 package com.example.yarapartserver.entity.enums;
 
 public enum Erole {
-    USER,
-    MODERATOR,
-    ADMIN
+
+    ROLE_MODERATOR,
+    ROLE_ADMIN,
+    ROLE_USER
 }

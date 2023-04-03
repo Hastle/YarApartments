@@ -10,6 +10,7 @@ import org.hibernate.Hibernate;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,6 +29,10 @@ public class User {
 
     @Column(unique = true)
     private String userName;
+
+    @Column(unique = true)
+    private String email;
+
     private String password;
     private LocalDateTime dateOfCreated;
 
@@ -36,11 +41,15 @@ public class User {
         dateOfCreated = LocalDateTime.now();
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @Column(name = "tokens")
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokenList;
 
 
     @Override
