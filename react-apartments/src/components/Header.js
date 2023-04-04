@@ -22,20 +22,6 @@ function Header() {
 
 			<header id="main" className="top-header">
 				<div className="container">
-					<div className="top-navigation">
-						<Link className="logo" to='/'>YarApartments.</Link>
-						<div className="main-menu">
-							<ul>
-								<li><a className="menu-item scroll" href="#main">Главная</a></li>
-								<li><a className="menu-item scroll" href="#apartments">Квартиры</a></li>
-								<li><a className="menu-item scroll" href="#about">О нас</a></li>
-								<li><a className="menu-item scroll" href="#contacts">Контакты</a></li>
-							</ul>
-							<Link className="primary-btn" to='/login'>Личный кабинет</Link>
-						</div>
-					</div>
-				</div>
-				<div className="container">
 					<div className="main-search">
 						<select>
 							<option value="1">1-комн. квартира</option>
