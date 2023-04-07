@@ -1,6 +1,7 @@
 {
   "name": "react-yarapartments",
   "version": "1.0.0",
+  "proxy": "http://localhost:8080",
   "main": "index.js",
   "scripts": {
     "start": "cross-env SERVE=true webpack serve",
