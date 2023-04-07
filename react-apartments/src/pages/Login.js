@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { redirect } from 'react-router-dom';
 import Wrapper from '../components/wrapper/Wrapper';
@@ -27,10 +27,10 @@ export default class Login extends React.Component {
 		};
 
 		axios.post(apiUrl, user)
-		.then(res => {
-			//console.log(res);
-			console.log(res.data);
-		})
+			.then(res => {
+				//console.log(res);
+				console.log(res.data);
+			})
 	}
 
 	render() {
@@ -48,7 +48,7 @@ export default class Login extends React.Component {
 									<input type="password" onChange={this.passChange}/>
 									<button className="chief-btn" type="submit">Войти</button>
 								</form>
-							</div>	
+							</div>
 						</div>
 					</div>
 				</div>
