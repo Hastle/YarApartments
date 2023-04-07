@@ -1,24 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Styles from './navbar.sass'
+import {Link, NavLink} from 'react-router-dom';
+import './navbar.sass';
 
+const activeLink = 'menu-item menu-item--active:after';
+const normalLink = 'menu-item'
+/*{({isActive}) => isActive ? activeLink : normalLink}*/
 function Navbar() {
 	return (
 		
 		<div className="top-navigation">
 			<div className="container">
-				
 				<div className="main-menu">
-					<Link className="logo" to='/'>YarApartments.</Link>
-					<div className="sub-menu">
-						<ul>
-							<li><Link className="menu-item" to='/'>Главная</Link></li>
-							<li><Link className="menu-item" to='/apartments'>Квартиры</Link></li>
-							<li><Link className="menu-item" to='/'>О нас</Link></li>
-							<li><Link className="menu-item" to='/'>Контакты</Link></li>
-						</ul>
+					<NavLink className="logo" to='/'>YarApartments.</NavLink>
+					<nav className="sub-menu">
+						<NavLink className="menu-item" to='/'>Главная</NavLink>
+						<NavLink className="menu-item" to='/apartments'>Квартиры</NavLink>
+						<NavLink className="menu-item" to='/about'>О нас</NavLink>
+						<NavLink className="menu-item" to='/contacts'>Контакты</NavLink>
 						<Link className="primary-btn" to='/login'>Личный кабинет</Link>
-					</div>
+					</nav>
 				</div>
 			</div>
 		</div>

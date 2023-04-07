@@ -6,6 +6,7 @@
 	padding: 10px
 	font-size: 20px
 	+regular
+	+shadow
 .top-navigation
 	position: fixed
 	top: 0
@@ -33,6 +34,16 @@
 		font-size: 17px
 		+regular
 		padding: 10px
+		position: relative
+		&--active:after
+			content: ''
+			position: absolute
+			width: 100%
+			left: 0
+			bottom: 0
+			height: 2px
+			border-radius: 2px
+			background: $black
 	.sub-menu
 		display: flex
 		align-content: center
