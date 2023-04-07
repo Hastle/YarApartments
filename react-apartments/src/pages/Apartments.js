@@ -1,5 +1,5 @@
 import React from 'react'
-import Data from '../Api/Data';
+import Data from '../api/data/Data';
 import Wrapper from '../components/wrapper/Wrapper';
 
 function Apartments() {
