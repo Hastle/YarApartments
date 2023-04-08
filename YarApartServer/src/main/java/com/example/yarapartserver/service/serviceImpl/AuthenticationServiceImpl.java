@@ -38,19 +38,19 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtGenerator jwtGenerator;
     private final TokenRepository tokenRepository;
+    private final EmailSenderService mailSender;
 
     private final AuthTokenFilter authTokenFilter;
 
     @Transactional
     @Override
-    public JwtResponse registration(RegistrationDto registrationDto) {
+    public boolean registration(RegistrationDto registrationDto) {
 
         log.info("Start registr");
-        if (userRepository.existsByUserName(registrationDto.getUserName())) {
-            return null;
-        }
-        if (userRepository.existsByEmail(registrationDto.getEmail())) {
-            return null;
+        if (userRepository.existsByUserName(registrationDto.getUserName())
+                || userRepository.existsByEmail(registrationDto.getEmail())) {
+
+            return false;
         }
 
         User createUser = new User();
@@ -65,15 +65,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         var savedUser = userRepository.save(createUser);
 
-        var logInDto = LogInDto.builder()
-                .userName(registrationDto.getUserName())
-                .password(registrationDto.getPassword())
-                .build();
-
-        var jwtToken = authentication(logInDto).getToken();
+        //MailSender
+        sendConfirmMail(savedUser);
         log.info("End registr");
-
-        return new JwtResponse(jwtToken, savedUser.getUserName());
+        return true;
     }
 
     @Override
@@ -118,6 +113,30 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             t.setRevoked(true);
         });
         tokenRepository.saveAll(validUserTokens);
+    }
+
+    private void sendConfirmMail(User user) {
+
+        String message = String.format(
+                "Hello, %s! \n" +
+                        "Welcome to YarApart. Please, visit next link: http://localhost:8080/auth/activate/%s",
+                user.getUserName(),
+                user.getActivationCode()
+        );
+        mailSender.sendEmail(user.getEmail(), "Activation code", message);
+        log.info("Mail was sent");
+    }
+
+    @Transactional
+    public boolean activateUser(String code) {
+        log.info("Activate block is working");
+        User user = userRepository.findByActivationCode(code)
+                .orElseThrow(() -> new IllegalArgumentException("activation code is not valid"));
+
+        user.setActivationCode("none");
+        user.setActive(true);
+        userRepository.save(user);
+        return true;
     }
 
 }

@@ -9,10 +9,7 @@ import lombok.ToString;
 import org.hibernate.Hibernate;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -36,9 +33,16 @@ public class User {
     private String password;
     private LocalDateTime dateOfCreated;
 
+    private String activationCode;
+    private boolean active;
+
+
     @PrePersist
     private void onCreate() {
         dateOfCreated = LocalDateTime.now();
+
+        activationCode = UUID.randomUUID().toString();
+        active = false;
     }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -47,7 +51,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @Column(name = "tokens")
+    //    @Column(name = "tokens")
     @OneToMany(mappedBy = "user")
     private List<Token> tokenList;
 
