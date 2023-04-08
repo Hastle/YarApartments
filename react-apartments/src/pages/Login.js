@@ -1,58 +1,99 @@
-import React from 'react';
-import axios from 'axios';
-import { redirect } from 'react-router-dom';
+import React, { useState, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
 import Wrapper from '../components/wrapper/Wrapper';
 
-const apiUrl = 'https://c19c-2a00-1fa0-84f-ee7d-78ec-e285-a87f-e69e.eu.ngrok.io/auth/signin';
+import AuthService from "../services/auth.service";
 
-export default class Login extends React.Component {
-	state = {
-		user: ''
-	}
+const apiUrl = 'https://8fe1-178-57-124-20.eu.ngrok.io/auth/signin';
 
-	handleChange = event => {
-		this.setState({ name: event.target.value });
-	}
+const Login = () => {
+	let navigate = useNavigate();
 
-	passChange = event => {
-		this.setState({ password: event.target.value});
-	}
+	const form = useRef();
+	const checkBtn = useRef();
 
-	handleSubmit = event => {
-		event.preventDefault();
+	const [userName, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [message, setMessage] = useState("");
 
-		const user = {
-			userName: this.state.name,
-			password: this.state.password
-		};
+	const onChangeUsername = (e) => {
+		const userName = e.target.value;
+		setUsername(userName);
+	};
 
-		axios.post(apiUrl, user)
-			.then(res => {
-				//console.log(res);
-				console.log(res.data);
-			})
-	}
+	const onChangePassword = (e) => {
+		const password = e.target.value;
+		setPassword(password);
+	};
 
-	render() {
-		return (
-			<Wrapper>
-				<div id="login">
-					<div className="container">
-						<div className="row">
-							<div className="col-md-12">
-								<h2>Вход в личный кабинет</h2>
-							</div>
-							<div className="col-md-4 offset-md-4">
-								<form onSubmit={this.handleSubmit}>
-									<input type="text" onChange={this.handleChange}/>
-									<input type="password" onChange={this.passChange}/>
-									<button className="chief-btn" type="submit">Войти</button>
-								</form>
-							</div>
+	const handleLogin = (e) => {
+		e.preventDefault();
+
+		setMessage("");
+		setLoading(true);
+
+		if (setPassword !== "" && setUsername !== "") {
+			AuthService.login(userName, password).then(
+				() => {
+					navigate("/profile");
+					window.location.reload();
+				},
+				(error) => {
+					const resMessage =
+						(error.response &&
+							error.response.data &&
+							error.response.data.message) ||
+						error.message ||
+						error.toString();
+
+					setLoading(false);
+					setMessage(resMessage);
+				}
+			);
+		} else {
+			setLoading(false);
+		}
+	};
+
+	return (
+		<Wrapper>
+			<div id="login">
+				<div className="container">
+					<div className="row">
+						<div className="col-md-12">
+							<h2>Вход в личный кабинет</h2>
+						</div>
+						<div className="col-md-4 offset-md-4">
+							<form onSubmit={handleLogin}>
+								<input
+									type="text"
+									name="userName"
+									value={userName}
+									onChange={onChangeUsername}
+									required
+								/>
+								<input
+									type="password"
+									name="password"
+									value={password}
+									onChange={onChangePassword}
+									required
+								/>
+								<button className="chief-btn" type="submit">Войти</button>
+								{message && (
+									<div className="form-group">
+										<div className="alert alert-danger" role="alert">
+											{message}
+										</div>
+									</div>
+								)}
+							</form>
 						</div>
 					</div>
 				</div>
-			</Wrapper>
-		);
-	}
+			</div>
+		</Wrapper>
+	);
 }
+export default Login;
