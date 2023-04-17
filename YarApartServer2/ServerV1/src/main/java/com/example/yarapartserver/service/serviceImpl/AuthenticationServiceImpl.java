@@ -25,6 +25,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -85,7 +86,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         revokeAllUserTokens(user);
         saveUserToken(user, jwt);
 
-        return new JwtResponse(jwt, user.getUserName());
+        List<String> roles = user.getRoles().stream()
+                .map(item -> item.getRole().toString()).toList();
+
+        return new JwtResponse(jwt, user.getUserName(), roles);
     }
 
     private void saveUserToken(User user, String jwtToken) {
