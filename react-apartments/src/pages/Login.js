@@ -4,8 +4,6 @@ import Wrapper from '../components/wrapper/Wrapper';
 
 import AuthService from "../services/auth.service";
 
-const apiUrl = 'https://8fe1-178-57-124-20.eu.ngrok.io/auth/signin';
-
 const Login = () => {
 	let navigate = useNavigate();
 
