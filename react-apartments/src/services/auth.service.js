@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = "https://fe22-178-57-124-20.eu.ngrok.io/auth/";
+const API_URL = "https://ca28-194-85-200-162.ngrok-free.app/";
 
 const register = (userName, email, password) => {
-    return axios.post(API_URL + "signup", {
+    return axios.post(API_URL + "auth/signup", {
         userName,
         email,
         password,
@@ -12,7 +12,7 @@ const register = (userName, email, password) => {
 
 const login = (userName, password) => {
     return axios
-        .post(API_URL + "signin", {
+        .post(API_URL + "auth/signin", {
             userName,
             password,
         })
