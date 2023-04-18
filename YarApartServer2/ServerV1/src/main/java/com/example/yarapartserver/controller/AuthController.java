@@ -23,11 +23,9 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(
             @RequestBody RegistrationDto registrationDto) {
-        if (authenticationService.registration(registrationDto)) {
-            return ResponseEntity.ok("Create Success");
-        } else {
-            return new ResponseEntity<>("Already exist", HttpStatus.BAD_REQUEST);
-        }
+        authenticationService.registration(registrationDto);
+
+        return ResponseEntity.ok("Create Success");
     }
 
     @PostMapping("/signin")

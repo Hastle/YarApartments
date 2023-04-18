@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AuthenticationService {
 
-    boolean registration(RegistrationDto registrationDto);
+    void registration(RegistrationDto registrationDto);
 
     JwtResponse authentication(LogInDto logInDto);
 

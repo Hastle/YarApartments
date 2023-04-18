@@ -10,6 +10,7 @@ import com.example.yarapartserver.entity.Token;
 import com.example.yarapartserver.entity.User;
 import com.example.yarapartserver.entity.enums.Erole;
 import com.example.yarapartserver.entity.enums.TokenType;
+import com.example.yarapartserver.exception.AlreadyExistException;
 import com.example.yarapartserver.repository.RoleRepository;
 import com.example.yarapartserver.repository.TokenRepository;
 import com.example.yarapartserver.repository.UserRepository;
@@ -40,20 +41,20 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JwtGenerator jwtGenerator;
     private final TokenRepository tokenRepository;
     private final EmailSenderService mailSender;
-
     private final AuthTokenFilter authTokenFilter;
 
     @Transactional
     @Override
-    public boolean registration(RegistrationDto registrationDto) {
+    public void registration(RegistrationDto registrationDto) {
 
+        //Checking for present
         log.info("Start registr");
         if (userRepository.existsByUserName(registrationDto.getUserName())
                 || userRepository.existsByEmail(registrationDto.getEmail())) {
-
-            return false;
+            throw new AlreadyExistException("User already exist");
         }
 
+        //create new persistent user
         User createUser = new User();
         createUser.setUserName(registrationDto.getUserName());
         createUser.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
@@ -69,7 +70,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         //MailSender
         sendConfirmMail(savedUser);
         log.info("End registr");
-        return true;
     }
 
     @Override
