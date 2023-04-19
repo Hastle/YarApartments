@@ -1,0 +1,52 @@
+@import "../../styles/mixins"
+/*==========  Footer  ==========*/
+footer
+	display: flex
+	justify-content: flex-end
+	position: relative
+	bottom: 0
+	width: 100%
+	background-color: rgba(0, 0, 0, 0.8)
+	padding: 110px 0
+	h5
+		font-size: 20px
+		color: $white
+		margin: 0
+		+regular
+		font-weight: normal
+		text-align: left
+	p
+		text-align: left
+		color: rgba(255, 255, 255, 0.5)
+	.logo
+		color: $white
+	.chief-btn
+		margin-top: 10px
+	.footer-list
+		list-style: none
+		padding: 0
+		li
+			margin-bottom: 10px
+		a
+			+regular
+			font-size: 16px
+			color: rgba(255, 255, 255, 0.5)
+			+flow
+			&:hover
+				color: $white
+				+flow
+	.social-links
+		display: flex
+		justify-content: center
+		a
+			color: rgba(255, 255, 255, 0.5)
+			padding: 0.5rem
+			font-size: 20px
+			+flow
+			&:hover
+				color: $white
+				+flow
+	.copyright
+		p
+			text-align: center
+			margin: 0

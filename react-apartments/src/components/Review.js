@@ -45,7 +45,6 @@ const settings = {
 	nextButton: '.NextBtn',
 	mouseDrag: true,
 	loop: true,
-	items: 3,
 	speed: 700,
 	arrowKeys: true,
 	autoplay: false,
@@ -58,17 +57,14 @@ const settings = {
 		1200: {
 			items: 3
 		},
-		992: {
+		760: {
 			items: 2
-		},
-		768: {
-			items: 1
 		},
 		480: {
 			items: 1
 		}
 	}
-};
+}
 
 function Review() {
 	return (

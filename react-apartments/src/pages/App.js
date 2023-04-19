@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
-import Header from '../components/header';
-import Apartments from '../components/apartments';
-import About from '../components/about';
-import Review from '../components/review';
-import Footer from '../components/footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainPage from '../pages/MainPage';
+import Login from './Login';
+import Profile from './Profile';
+import Apartments from '../pages/Apartments';
+
+import ScrollToTop from '../utils/ScrollToTop';
 
 function App() {
 	return (
 		<>
-
-			<Header />
-			<Apartments />
-			<About />
-			<Review />
-			<Footer />
+			
+			<BrowserRouter>
+				<ScrollToTop />
+				<Routes>
+					<Route path="/" element={<MainPage />}/>
+					<Route path="/login" element={<Login />}/>
+					<Route path="/profile" element={<Profile />}/>
+					<Route path="/apartments" element={<Apartments />}/>
+				</Routes>
+			</BrowserRouter>
 
 		</>
-	);
+	)
 }
 
 export default App;

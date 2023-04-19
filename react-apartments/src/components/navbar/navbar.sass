@@ -1,0 +1,52 @@
+@import "../../styles/mixins"
+/*==========  Navbar  ==========*/
+.logo
+	display: inline-flex
+	color: $black
+	padding: 10px
+	font-size: 20px
+	+regular
+	+shadow
+.top-navigation
+	position: fixed
+	top: 0
+	display: flex
+	height: 100px
+	width: 100%
+	z-index: 100
+	align-items: center
+	background-color: $white
+	+box-shadow
+	//justify-content: space-between
+	.main-menu
+		display: flex
+		justify-content: space-between
+		align-items: center
+	ul
+		display: flex
+		align-items: center
+		margin: 0
+		padding: 0
+		list-style: none
+		text-decoration: none
+	.menu-item
+		color: $black
+		font-size: 17px
+		+regular
+		padding: 10px
+		position: relative
+		&--active:after
+			content: ''
+			position: absolute
+			width: 100%
+			left: 0
+			bottom: 0
+			height: 2px
+			border-radius: 2px
+			background: $black
+	.sub-menu
+		display: flex
+		align-content: center
+		justify-content: space-between
+	.primary-btn
+		margin-left: 30px

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react'
 import Data from '../api/data/Data';
+import Wrapper from '../components/wrapper/Wrapper';
 
 function Apartments() {
 	return (
-		<>
-
+		<Wrapper>
 			<section id="apartments">
 				<div className="container">
 					<div className="row">
-						<div className="col-md-6 mx-auto text-center">
-							<h3>Наши Квартиры</h3>
+						<div className="col-md-6 text-center">
+							
 						</div>
 					</div>
 					<div className="row">
@@ -29,8 +29,8 @@ function Apartments() {
 					</div>
 				</div>
 			</section>
-
-		</>
-	);
+		</Wrapper>
+	)
 }
+
 export default Apartments;

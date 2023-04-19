@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Styles from './footer.sass'
+import {NavLink} from "react-router-dom";
 
 function Footer() {
 	return (
@@ -18,10 +20,10 @@ function Footer() {
 								<div className="col-md-6">
 									<h5>Карта сайта</h5>
 									<ul className="footer-list">
-										<li><a className="scroll" href="#main">Главная</a></li>
-										<li><a className="scroll" href="#apartments">Квартиры</a></li>
-										<li><a className="scroll" href="#about">О нас</a></li>
-										<li><a className="scroll" href="#contacts">Контакты</a></li>
+										<li><NavLink to='/'>Главная</NavLink></li>
+										<li><NavLink className="menu-item" to='/apartments'>Квартиры</NavLink></li>
+										<li><NavLink className="menu-item" to='/about'>О нас</NavLink></li>
+										<li><NavLink className="menu-item" to='/contacts'>Контакты</NavLink></li>
 									</ul>
 								</div>
 								<div className="col-md-6">

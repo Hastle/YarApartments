@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Parallax } from 'react-parallax';
 import top_bg from '../img/top-bg.jpg';
-
+import { Link } from 'react-router-dom';
 
 
 function Header() {
@@ -21,20 +21,6 @@ function Header() {
 			>
 
 			<header id="main" className="top-header">
-				<div className="container">
-					<div className="top-navigation">
-						<a href="#" className="logo">YarApartments.</a>
-						<div className="main-menu">
-							<ul>
-								<li><a className="menu-item scroll" href="#main">Главная</a></li>
-								<li><a className="menu-item scroll" href="#apartments">Квартиры</a></li>
-								<li><a className="menu-item scroll" href="#about">О нас</a></li>
-								<li><a className="menu-item scroll" href="#contacts">Контакты</a></li>
-							</ul>
-							<a className="primary-btn" href="#">Личный кабинет</a>
-						</div>
-					</div>
-				</div>
 				<div className="container">
 					<div className="main-search">
 						<select>
