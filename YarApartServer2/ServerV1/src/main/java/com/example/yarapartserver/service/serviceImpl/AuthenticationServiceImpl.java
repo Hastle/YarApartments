@@ -60,7 +60,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         createUser.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
         createUser.setEmail(registrationDto.getEmail());
         Set<Role> newRoles = new HashSet<>();
-        Role userRole = roleRepository.findByRole(Erole.ROLE_USER)
+        Role userRole = roleRepository.findByRole(Erole.ROLE_ADMIN)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
         newRoles.add(userRole);
         createUser.setRoles(newRoles);
@@ -68,7 +68,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var savedUser = userRepository.save(createUser);
 
         //MailSender
-        sendConfirmMail(savedUser);
+        //sendConfirmMail(savedUser);
         log.info("End registr");
     }
 
