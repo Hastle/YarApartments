@@ -42,7 +42,7 @@ public class User {
         dateOfCreated = LocalDateTime.now();
 
         activationCode = UUID.randomUUID().toString();
-        active = false;
+        active = true;
     }
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
