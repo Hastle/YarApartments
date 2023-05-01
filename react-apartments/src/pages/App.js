@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
+import Apartments from '../pages/Apartments';
+import About from '../pages/About';
+import Contacts from "./Contacts";
 import Login from './Login';
 import Profile from '../pages/Profile';
-import Apartments from '../pages/Apartments';
 
 import ScrollToTop from '../utils/ScrollToTop';
+
 
 function App() {
 	return (
@@ -15,9 +18,11 @@ function App() {
 				<ScrollToTop />
 				<Routes>
 					<Route path="/" element={<MainPage />}/>
+					<Route path="/apartments" element={<Apartments />}/>
+					<Route path="/about" element={<About />}/>
+					<Route path="/contacts" element={<Contacts />}/>
 					<Route path="/login" element={<Login />}/>
 					<Route path="/profile" element={<Profile />}/>
-					<Route path="/apartments" element={<Apartments />}/>
 				</Routes>
 			</BrowserRouter>
 
