@@ -6,7 +6,7 @@ function Wrapper(props) {
 	return (
 		<div>
 			<Navbar />
-				<div className="mt-100">
+				<div className="mt-nh">
 					{props.children}
 				</div>
 			<Footer />
