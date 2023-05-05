@@ -30,6 +30,7 @@ module.exports = {
 	devtool: 'source-map',
 	entry: './src/index.js',
 	devServer: {
+		host: 'local-ip',
 		static: './dist',
 		hot: true,
 		port: 3000,
