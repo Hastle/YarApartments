@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Wrapper from '../components/wrapper/Wrapper';
-import Modal from "../components/modal/Modal";
+import Modal from "../components/modals/Modal";
 
 const Contacts = () => {
     const [modalActive, setModalActive] = useState(false);
