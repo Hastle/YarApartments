@@ -1,0 +1,46 @@
+@import "../../styles/mixins"
+/*==========  Modal  ==========*/
+.modal
+	display: none
+	align-items: center
+	justify-content: center
+	height: 100vh
+	width: 100vw
+	background: rgba(0, 0, 0, 0.4)
+	position: fixed
+	top: 0
+	left: 0
+	z-index: 100
+	pointer-events: none
+	opacity: 0
+	+flow
+.modal.active
+	display: flex
+	pointer-events: all
+	opacity: 1
+	+flow
+.modal-content
+	display: flex
+	flex-direction: column
+	border-radius: 5px
+	text-align: center
+	width: 30vw
+	background: $white
+	padding: 20px
+.modal-header
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	position: relative
+.modal-body
+	display: flex
+	padding: 20px 0
+h4
+	margin: 0
+	text-align: center
+.close-btn
+	display: flex
+	align-items: center
+	position: absolute
+	left: 0
