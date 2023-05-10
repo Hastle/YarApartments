@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Wrapper from '../components/wrapper/Wrapper';
 import Modal from "../components/modals/Modal";
 
