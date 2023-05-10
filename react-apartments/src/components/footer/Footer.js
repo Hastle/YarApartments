@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Styles from './footer.sass'
+import React, {Component} from 'react';
+import Styles from './footer.sass';
 import {NavLink} from "react-router-dom";
-import { FaVk, FaFacebookF, FaWhatsapp } from 'react-icons/fa'
+import {FaVk, FaFacebookF, FaWhatsapp} from 'react-icons/fa'
 
 function Footer() {
 	return (
