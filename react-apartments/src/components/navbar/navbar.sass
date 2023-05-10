@@ -20,6 +20,7 @@
 	//justify-content: space-between
 	.main-menu
 		display: flex
+		position: relative
 		justify-content: space-between
 		align-items: center
 	ul
@@ -33,7 +34,7 @@
 		color: $black
 		font-size: 17px
 		+regular
-		padding: 10px
+		padding: 10px 20px
 		position: relative
 		&--active:after
 			content: ''
@@ -48,5 +49,35 @@
 		display: flex
 		align-content: center
 		justify-content: space-between
+		position: relative
 	.primary-btn
 		margin-left: 30px
+	.dropdown-menu
+		display: none
+		flex-direction: column
+		position: absolute
+		width: 300px
+		top: calc($nav-height - 20px)
+		right: 0
+		background-color: $white
+		opacity: 0
+		+border-rds
+		+block-shadow
+	.dropdown-menu.active
+		display: flex
+		opacity: 1
+		+flow
+		&::before, &::after
+			content: ''
+			position: absolute
+			right: 20px
+			top: -9px
+			height: 20px
+			width: 20px
+			transform: rotate(45deg)
+			background: $white
+			+block-shadow
+			z-index: -1
+		&::before
+			z-index: 1
+			box-shadow: none
