@@ -1,5 +1,5 @@
 import React from 'react';
-import { MdClose } from 'react-icons/md';
+import {MdClose} from 'react-icons/md';
 import Styles from './modal.sass';
 const Modal = ({active, setActive, title, body, footer}) =>{
     return (
