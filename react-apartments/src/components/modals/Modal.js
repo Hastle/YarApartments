@@ -4,7 +4,7 @@ import Styles from './modal.sass';
 const Modal = ({active, setActive, title, body, footer}) =>{
     return (
         <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <div className="modal-content col-md-4" onClick={e => e.stopPropagation()}>
                 <div className="modal-header">
                     <button className="close-btn" onClick={() => setActive(false)}><MdClose/></button>
                     <h4>{title}</h4>
