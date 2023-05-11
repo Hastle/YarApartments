@@ -1,0 +1,23 @@
+@import "../../styles/mixins"
+/*==========  Filter  ==========*/
+.main-search
+	background-color: $white
+	display: flex
+	flex-wrap: wrap
+	align-items: center
+	height: auto
+	width: fit-content !important
+	margin: 0 auto
+	padding: 10px
+	+border-rds
+	select
+		height: 30px
+		outline: none
+		margin-right: 30px
+
+@media only screen and (max-width : 768px)
+	.main-search
+		flex-direction: column
+		justify-content: center
+		select
+			margin: 0 0 15px
