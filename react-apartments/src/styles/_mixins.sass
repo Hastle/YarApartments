@@ -1,4 +1,5 @@
 $acent: #f23a2e
+$acent-hover: #eb1c0f
 $grey: #8d8d8d
 $dark: #445963
 $yellow: #fef8e0
@@ -32,8 +33,8 @@ $nav-height: 70px
 	&:-ms-input-placeholder
 		@content
 =arr($width, $height, $bg, $direction)
-	width: 0px
-	height: 0px
+	width: 0
+	height: 0
 	border-style: solid
 	@if $direction == t
 		border-width: 0 $width / 2 + px $height + px $width / 2 + px
@@ -60,8 +61,8 @@ $nav-height: 70px
 		border-width: $height + px 0 0 $width + px
 		border-color: transparent transparent transparent $bg
 =regular
-	font-family: "RubikRegular"
+	font-family: "RubikRegular", serif
 =bold
-	font-family: "RubikBold"
+	font-family: "RubikBold", serif
 =lig
-	font-family: "RubikLight"
+	font-family: "RubikLight", serif
