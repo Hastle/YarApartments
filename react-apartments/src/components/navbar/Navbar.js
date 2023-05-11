@@ -12,6 +12,7 @@ function Navbar() {
 	const {ref, isOpen, setIsOpen} = useOutsideAlerter(false);
 	const toggleOpen = () => {
 		isOpen === true ? setIsOpen(false) : setIsOpen(true);
+		console.log(setIsOpen);
 	}
 	return (
 		<div className="top-navigation">
@@ -23,7 +24,7 @@ function Navbar() {
 							<FiMenu size="24px" />
 						</button>
 					</div>
-					<div className={isOpen ? "dropdown-menu active" : "dropdown-menu"} onClick={toggleOpen}>
+					<div className={isOpen ? "dropdown-menu active" : "dropdown-menu"}>
 						<NavLink className="menu-item" to='/'>Главная</NavLink>
 						<NavLink className="menu-item" to='/apartments'>Квартиры</NavLink>
 						<NavLink className="menu-item" to='/about'>О нас</NavLink>
