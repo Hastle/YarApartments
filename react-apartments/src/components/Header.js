@@ -1,51 +1,29 @@
 import React, { Component } from 'react';
 import { Parallax } from 'react-parallax';
+import Filter from '../components/filter/Filter';
 import top_bg from '../img/top-bg.jpg';
 import { Link } from 'react-router-dom';
 
 
 function Header() {
 	return (
-		<>
-
-			<Parallax 
-				bgImage={top_bg}
-				strength={500}
-				bgImageStyle={{
-					width: '100%',
-					height: 'auto',
-					minHeight: '100vh', 
-					objectFit: 'cover', 
-					left: '50%'
-				}}
-			>
-
+		<Parallax
+			bgImage={top_bg}
+			strength={500}
+			bgImageStyle={{
+				width: '100%',
+				height: 'auto',
+				minHeight: '100vh',
+				objectFit: 'cover',
+				left: '50%'
+			}}
+		>
 			<header id="main" className="top-header">
 				<div className="container">
-					<div className="main-search">
-						<select>
-							<option value="1">1-комн. квартира</option>
-							<option value="2">2-комн. квартира</option>
-						</select>
-						<select>
-							<option value="1">Дзержинский</option>
-							<option value="2">Заволжский</option>
-							<option value="2">Кировский</option>
-							<option value="2">Красноперекопский</option>
-							<option value="2">Ленинский</option>
-							<option value="2">Фрунзенский</option>
-						</select>
-						<select>
-							<option value="1">Этаж 1</option>
-							<option value="2">Этаж 2</option>
-						</select>
-					</div>
+					<Filter />
 				</div>
 			</header>
-
-			</Parallax>
-
-		</>
+		</Parallax>
 	);
 }
 
