@@ -19,11 +19,11 @@ function Navbar() {
 				<div className="main-menu">
 					<NavLink className="logo" to='/'>YarApartments.</NavLink>
 					<div className="sub-menu">
-						<button className="menu-btn" onClick={toggleOpen}>
+						<button className="menu-btn" onClick={toggleOpen} ref={ref}>
 							<FiMenu size="24px" />
 						</button>
 					</div>
-					<div className={isOpen ? "dropdown-menu active" : "dropdown-menu"} onClick={toggleOpen} ref={ref}>
+					<div className={isOpen ? "dropdown-menu active" : "dropdown-menu"} onClick={toggleOpen}>
 						<NavLink className="menu-item" to='/'>Главная</NavLink>
 						<NavLink className="menu-item" to='/apartments'>Квартиры</NavLink>
 						<NavLink className="menu-item" to='/about'>О нас</NavLink>
