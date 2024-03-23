@@ -4,7 +4,6 @@ import Filter from '../components/filter/Filter';
 import top_bg from '../img/top-bg.jpg';
 import { Link } from 'react-router-dom';
 
-
 function Header() {
 	return (
 		<Parallax
