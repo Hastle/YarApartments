@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Parallax } from 'react-parallax';
 import Filter from '../components/filter/Filter';
 import top_bg from '../img/top-bg.jpg';
