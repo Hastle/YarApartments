@@ -1,6 +1,0 @@
-#FileLock
-#Wed Apr 19 11:55:33 UTC 2023
-server=192.168.1.6\:4761
-hostName=Forcefull
-method=file
-id=187995eb5046215bd44abbcb11cde86d7df191ee51a
