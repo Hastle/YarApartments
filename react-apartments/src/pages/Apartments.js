@@ -1,6 +1,6 @@
 import React from 'react'
 import Data from '../api/data/Data';
-import Wrapper from '../components/wrapper/Wrapper';
+import Wrapper from '../components/Wrapper/Wrapper';
 
 function Apartments() {
 	return (
@@ -9,7 +9,7 @@ function Apartments() {
 				<div className="container">
 					<div className="row">
 						<div className="col-md-6 text-center">
-							
+
 						</div>
 					</div>
 					<div className="row">

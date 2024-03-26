@@ -20,7 +20,7 @@ function Filter() {
 				<option value="1">Этаж 1</option>
 				<option value="2">Этаж 2</option>
 			</select>
-			<button className="chief-btn">Найти </button>
+			<button className="chief-btn">Найти</button>
 		</div>
 	)
 }

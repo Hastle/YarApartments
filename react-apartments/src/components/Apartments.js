@@ -4,7 +4,6 @@ import Data from '../api/data/Data';
 function Apartments() {
 	return (
 		<>
-
 			<section id="apartments">
 				<div className="container">
 					<div className="row">
@@ -29,7 +28,6 @@ function Apartments() {
 					</div>
 				</div>
 			</section>
-
 		</>
 	);
 }

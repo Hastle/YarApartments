@@ -69,7 +69,6 @@ const settings = {
 function Review() {
 	return (
 		<>
-
 			<section id="reviews">
 				<div className="container">
 					<div className="row">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Parallax } from 'react-parallax';
-import Filter from '../components/filter/Filter';
+import Filter from './Filter/Filter';
 import top_bg from '../img/top-bg.jpg';
 import { Link } from 'react-router-dom';
 

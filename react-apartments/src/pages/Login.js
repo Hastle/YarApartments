@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import Wrapper from '../components/wrapper/Wrapper';
+import Wrapper from '../components/Wrapper/Wrapper';
 
 import AuthService from "../services/auth.service";
 
