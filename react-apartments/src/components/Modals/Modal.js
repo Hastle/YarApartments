@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {MdClose} from 'react-icons/md';
 import Styles from './modal.sass';
 import ReactDOM from "react-dom";
