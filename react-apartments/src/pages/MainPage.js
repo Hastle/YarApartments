@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import HeroOverlay from '../components/HeroOverlay/HeroOverlay';
 import Apartments from '../components/apartments';
 import About from '../components/about';
