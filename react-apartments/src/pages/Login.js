@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import Wrapper from '../components/Layout/Layout';
 
 import AuthService from "../services/auth.service";
 
