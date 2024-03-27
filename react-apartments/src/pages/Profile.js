@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navigate, useNavigate} from 'react-router-dom';
-import Wrapper from '../components/Wrapper/Wrapper';
-import AuthService from "../services/auth.service";
+import AuthService from '../services/auth.service';
+
 const Profile = () => {
     const currentUser = AuthService.getCurrentUser();
     let navigate = useNavigate();
@@ -10,7 +10,7 @@ const Profile = () => {
         navigate("/");
     };
     return (
-        <Wrapper>
+        <>
             {currentUser ? (
                 <section>
                     <div className="container">
@@ -25,9 +25,9 @@ const Profile = () => {
                 </section>
             ) : (
                 <Navigate to="/" />
-                )
+            )
             }
-        </Wrapper>
+        </>
     );
 }
 

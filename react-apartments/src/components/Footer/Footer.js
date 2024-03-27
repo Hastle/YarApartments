@@ -49,7 +49,7 @@ function Footer() {
 				</div>
 				<div className="row mt-3">
 					<div className="col-md-12 copyright">
-						<p>Copyright © 2023 All Rights Reserved</p>
+						<p>Copyright © 2024 All Rights Reserved</p>
 					</div>
 				</div>
 			</div>
