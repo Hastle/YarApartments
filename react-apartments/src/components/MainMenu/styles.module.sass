@@ -1,0 +1,47 @@
+@import "../../styles/mixins"
+.menu_item
+	color: $black
+	font-size: 17px
+	+regular
+	padding: 10px 20px
+	position: relative
+	z-index: 3
+	+flow
+	&:hover
+		background-color: $white-hover
+		+flow
+.primary_btn
+	margin-left: 30px
+.dropdown_menu
+	display: none
+	flex-direction: column
+	padding: 10px
+	top: calc($nav-height - 20px)
+	right: 0
+	background-color: $white
+	opacity: 0
+	+border-rds
+	+block-shadow
+	&.active
+		display: flex
+		position: absolute
+		opacity: 1
+		+flow
+		&::before, &::after
+			content: ''
+			position: absolute
+			right: 20px
+			top: -9px
+			height: 20px
+			width: 20px
+			transform: rotate(45deg)
+			background: $white
+			+block-shadow
+			z-index: -1
+		&::before
+			z-index: 1
+			box-shadow: none
+.menu_btn
+	display: flex
+	position: relative
+	color: $black
