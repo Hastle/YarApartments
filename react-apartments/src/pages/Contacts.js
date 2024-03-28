@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Modal from '../components/Modals/Modal';
+import Modal from '../components/Modal/Modal';
 
 const Contacts = () => {
     const [modalActive, setModalActive] = useState(false);
