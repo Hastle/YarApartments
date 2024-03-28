@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TinySlider from 'tiny-slider-react';
 import 'tiny-slider/dist/tiny-slider.css';
-import apartment_1 from '../../../img/apartment-1.jpg';
-import apartment_2 from '../../../img/apartment-2.jpg';
-import apartment_3 from '../../../img/apartment-3.jpg';
+// import apartment_1 from '../../../img/apartment-1.jpg';
+// import apartment_2 from '../../../img/apartment-2.jpg';
+// import apartment_3 from '../../../img/apartment-3.jpg';
 
 const imgStyles = {
 	maxWidth: "100%",
