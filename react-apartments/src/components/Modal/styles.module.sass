@@ -1,5 +1,4 @@
 @import "../../styles/mixins"
-/*==========  Modal  ==========*/
 .modal
 	display: none
 	align-items: center
@@ -19,26 +18,28 @@
 	pointer-events: all
 	opacity: 1
 	+flow
-.modal-content
+.modal_content
 	display: flex
 	flex-direction: column
 	border-radius: 5px
 	text-align: center
 	background: $white
 	padding: 20px
-.modal-header
+.modal_header
 	display: flex
 	flex-direction: column
 	justify-content: center
 	align-items: center
 	position: relative
-.modal-body
+.modal_body
 	display: flex
 	padding: 20px 0
+.modal_footer
+	//display: flex
 h4
 	margin: 0
 	text-align: center
-.close-btn
+.close_btn
 	display: flex
 	align-items: center
 	position: absolute
