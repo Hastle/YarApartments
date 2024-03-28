@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import TinySlider from 'tiny-slider-react';
 import 'tiny-slider/dist/tiny-slider.css';
-import apartment_1 from '../img/apartment-1.jpg';
-import apartment_2 from '../img/apartment-2.jpg';
-import apartment_3 from '../img/apartment-3.jpg';
+import apartment_1 from '../../../img/apartment-1.jpg';
+import apartment_2 from '../../../img/apartment-2.jpg';
+import apartment_3 from '../../../img/apartment-3.jpg';
 
 const imgStyles = {
 	maxWidth: "100%",
@@ -66,7 +66,7 @@ const settings = {
 	}
 }
 
-function Review() {
+function Reviews() {
 	return (
 		<>
 			<section id="reviews">
@@ -106,4 +106,4 @@ function Review() {
 	);
 }
 
-export default Review;
+export default Reviews;

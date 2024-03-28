@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import MainPage from '../pages/MainPage';
-import Apartments from '../pages/Apartments';
-import About from '../pages/About';
+import MainPage from './MainPage';
+import Apartments from './Apartments';
+import About from './About';
 import Contacts from "./Contacts";
 import Login from './Login';
-import Profile from '../pages/Profile';
+import Profile from './Profile';
 import Layout from '../components/Layout/Layout';
 
 import ScrollToTop from '../utils/ScrollToTop';

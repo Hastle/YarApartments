@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Data from '../api/data/Data';
+import Data from '../../../api/data/Data';
 
 function Apartments() {
 	return (

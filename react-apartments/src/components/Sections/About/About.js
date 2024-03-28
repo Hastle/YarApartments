@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import apartment_6 from '../img/apartment-6.jpg';
-import top_bg from '../img/top-bg.jpg';
-import Modal from "./Modals/Modal";
+import apartment_6 from '../../../img/apartment-6.jpg';
+import top_bg from '../../../img/top-bg.jpg';
+import Modal from "../../Modal/Modal";
 
 function About() {
 	const [modalActive, setModalActive] = useState(false);
@@ -33,8 +33,12 @@ function About() {
 								облегчения поиска мы реализовали систему рекомендаций похожих объявлений. Все
 								объявления, которые Вам понравились, можно найти в личном кабинете с помощью добавления
 								в "Избранное". Проверенное жильё в Ярославле находится на сайте.</p>
-							<p><a onClick={() => setModalActive(true)}>Смотреть видео <i
-								className="fa fa-arrow-right"></i></a></p>
+							<p>
+								<a onClick={() => setModalActive(true)}>
+									Смотреть видео
+									<i className="fa fa-arrow-right"></i>
+								</a>
+							</p>
 						</div>
 					</div>
 				</div>
