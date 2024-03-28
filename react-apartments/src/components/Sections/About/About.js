@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import apartment_6 from '../../../img/apartment-6.jpg';
-import top_bg from '../../../img/top-bg.jpg';
-import Modal from "../../Modal/Modal";
+// import top_bg from '../../../img/top-bg.jpg';
+import Modal from '../../Modal/Modal';
 
 function About() {
 	const [modalActive, setModalActive] = useState(false);
