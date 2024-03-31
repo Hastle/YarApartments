@@ -1,9 +1,16 @@
 @import "mixins"
+@import "fonts"
+*
+	box-sizing: border-box
+html
+	overflow-x: hidden
+	margin-right: calc(-1 * (100vw - 100%))
 body
 	margin: 0
 	background-color: $white
 	color: $black
 	+regular
+	font-size: 1rem
 .App, #root
 	min-height: 100vh
 	display: flex
@@ -41,3 +48,21 @@ button:hover
 button:focus
 	background-color: transparent
 	outline-style: none
+hr
+	border: none
+	width: 100%
+	height: 1px
+	margin: 0
+	background-color: $light-gray
+h1, h2, h3, h4, h5, h6
+	display: flex
+.light
+	+light
+.regular
+	+regular
+.medium
+	+medium
+.semi-bold
+	+semi-bold
+.bold
+	+bold

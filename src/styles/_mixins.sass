@@ -1,0 +1,54 @@
+$accent: #f23a2e
+$accent-hover: #eb1c0f
+$grey: #8d8d8d
+$dark: #445963
+$yellow: #fef8e0
+$pink: #ffcdd2
+$white: #fefefe
+$white-hover: #f7f7f7
+$light: #f8f9fa
+$light-gray: #dddddd
+$black: #151515
+
+$green: #95E346
+$light-green: #dbf2c3
+
+$nav-height: 70px
+
+=border-radius
+	border-radius: 8px
+=shadow
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6)
+=box-shadow
+	box-shadow: 0 4px 20px 0 rgb(0 0 0 / 5%)
+=block-shadow
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12)
+=flow
+	transition: all .25s
+=flow-slow($sec)
+	transition: all $sec
+=placeholder
+	&::-webkit-input-placeholder
+		@content
+	&:-moz-placeholder
+		@content
+	&::-moz-placeholder
+		@content
+	&:-ms-input-placeholder
+		@content
+//=regular
+//	font-family: "RubikRegular", serif
+//=bold
+//	font-family: "RubikBold", serif
+//=lig
+//	font-family: "RubikLight", serif
+=light
+	font-family: "MontserratLight", serif
+=regular
+	font-family: "MontserratRegular", serif
+=medium
+	font-family: "MontserratMedium", serif
+=semi-bold
+	font-family: "MontserratSemiBold", serif
+=bold
+	font-family: "MontserratBold", serif
