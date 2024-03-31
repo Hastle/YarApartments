@@ -1,0 +1,30 @@
+@import "../../../styles/_mixins"
+.checkbox_container
+	display: inline-flex
+	position: relative
+	align-items: center
+	cursor: pointer
+.checkbox_input
+	position: absolute
+	opacity: 0
+	margin: 0
+.checkbox_checkmark
+	display: flex
+	justify-content: center
+	align-items: center
+	width: 18px
+	height: 18px
+	margin-right: 10px
+	border: 1px solid $black
+	border-radius: 4px
+	+flow
+.checkbox_input:checked + .checkbox_checkmark
+	background-color: $green
+	border-color: $green
+	+flow
+.checkbox_checkmark svg
+	visibility: hidden
+	flex: auto
+	font-size: 12px
+.checkbox_input:checked + .checkbox_checkmark svg
+	visibility: visible
