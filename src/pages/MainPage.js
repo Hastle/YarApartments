@@ -1,5 +1,7 @@
 import React from "react";
 import grid from "../styles/grid.module.sass";
+import Checkbox from "../components/ui/Checkbox/Checkbox";
+
 function MainPage() {
 	function renderContent(weight) {
 		return (
@@ -35,6 +37,11 @@ function MainPage() {
 							</div>
 						),
 					)}
+				</div>
+				<div className={grid.row}>
+					<div className={grid["col-md-12"]}>
+						<Checkbox label={"parking space"} />
+					</div>
 				</div>
 			</div>
 		</>
