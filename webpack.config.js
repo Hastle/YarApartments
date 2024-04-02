@@ -37,7 +37,7 @@ module.exports = {
 		static: "./dist",
 		hot: true,
 		port: 3000,
-		open: true,
+		open: false,
 	},
 
 	output: {
