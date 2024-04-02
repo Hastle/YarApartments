@@ -1,6 +1,10 @@
 import React from "react";
-import grid from "../styles/grid.module.sass";
 import Checkbox from "../components/ui/Checkbox/Checkbox";
+import Switch from "../components/ui/Switch/Switch";
+import Card from "../components/Card/Card";
+import grid from "../styles/grid.module.sass";
+
+import data from "../data/DataApartments";
 
 function MainPage() {
 	function renderContent(weight) {
@@ -29,20 +33,41 @@ function MainPage() {
 				<div className={grid.row}>
 					{["light", "regular", "medium", "semi-bold", "bold"].map(
 						(weight, index) => (
-							<div
-								key={index}
-								className={`${grid["col-md-6"]} ${weight}`}
-							>
-								{renderContent(weight)}
+							<div key={index} className={grid["col-md-6"]}>
+								<div className={weight}>
+									{renderContent(weight)}
+								</div>
 							</div>
 						),
 					)}
-				</div>
-				<div className={grid.row}>
-					<div className={grid["col-md-12"]}>
-						<Checkbox label={"parking space"} />
+
+					<div className={grid["col-md-6"]}>
+						<div className="">
+							<Checkbox label={"парковочное место"} />
+							<Checkbox checked disabled label={"балкон"} />
+							<Checkbox disabled label={"с мебелью"} />
+						</div>
+						<div className="">
+							<Switch label={"Квартиры от владельца"} />
+							<Switch checked disabled label={"Без предоплаты"} />
+							<Switch disabled label={"Посуточная оплата"} />
+						</div>
 					</div>
+
+					{data.map((apartment) => (
+						<div
+							key={apartment.id}
+							className={`${grid["col-md-4"]} ${grid["g-3"]}`}
+						>
+							<Card
+								address={apartment.address}
+								price={apartment.price}
+								imageUrl={apartment.imageUrl}
+							/>
+						</div>
+					))}
 				</div>
+				<div className={grid.row}></div>
 			</div>
 		</>
 	);
