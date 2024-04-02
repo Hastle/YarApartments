@@ -1,0 +1,30 @@
+@import "../../styles/mixins"
+.card
+	display: flex
+	flex-direction: column
+	position: relative
+	background: $white
+	overflow: hidden
+	+border-radius
+	+flow
+	&:hover
+		+box-shadow
+		+flow
+.cardContent
+	display: flex
+	flex-direction: column
+	padding: 20px
+.cardImage
+	position: relative
+	height: auto
+	width: 100%
+	max-width: 100%
+.cardPrice
+	display: flex
+	align-items: center
+	+semi-bold
+.cardAddress
+	color: $grey
+	overflow: hidden
+	text-overflow: ellipsis
+	white-space: nowrap
