@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Checkbox from "../components/ui/Checkbox/Checkbox";
 import Switch from "../components/ui/Switch/Switch";
 import Card from "../components/Card/Card";
+import Modal from "../components/ui/Modal/Modal";
 import grid from "../styles/grid.module.sass";
 
 import data from "../data/DataApartments";
+import button from "bootstrap/js/src/button";
 
 function MainPage() {
+	const [modalActive, setModalActive] = useState(false);
+	const bodyContent = (
+		<div style={{ textAlign: "center" }}>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut
+				dignissimos ducimus, et harum inventore iste laborum nostrum
+				nulla numquam placeat, possimus provident quam, quo quos saepe
+				suscipit? Eveniet, laboriosam.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut
+				dignissimos ducimus, et harum inventore iste laborum nostrum
+				nulla numquam placeat, possimus provident quam, quo quos saepe
+				suscipit? Eveniet, laboriosam.
+			</p>
+		</div>
+	);
+	const footerContent = <button>Отправить</button>;
+
 	function renderContent(weight) {
 		return (
 			<>
@@ -52,6 +73,19 @@ function MainPage() {
 							<Switch checked disabled label={"Без предоплаты"} />
 							<Switch disabled label={"Посуточная оплата"} />
 						</div>
+						<hr />
+						<div className="">
+							<button
+								style={{
+									padding: "16px 32px",
+									border: "1px solid #151515",
+									marginTop: "10px",
+								}}
+								onClick={() => setModalActive(true)}
+							>
+								Модальное окно
+							</button>
+						</div>
 					</div>
 
 					{data.map((apartment) => (
@@ -69,6 +103,13 @@ function MainPage() {
 				</div>
 				<div className={grid.row}></div>
 			</div>
+			<Modal
+				active={modalActive}
+				setActive={setModalActive}
+				title="Тестовый заголовок модального окана"
+				body={bodyContent}
+				footer={footerContent}
+			/>
 		</>
 	);
 }
