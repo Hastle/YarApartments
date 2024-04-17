@@ -11,20 +11,14 @@ import button from "bootstrap/js/src/button";
 function MainPage() {
 	const [modalActive, setModalActive] = useState(false);
 	const bodyContent = (
-		<div style={{ textAlign: "center" }}>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut
-				dignissimos ducimus, et harum inventore iste laborum nostrum
-				nulla numquam placeat, possimus provident quam, quo quos saepe
-				suscipit? Eveniet, laboriosam.
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut
-				dignissimos ducimus, et harum inventore iste laborum nostrum
-				nulla numquam placeat, possimus provident quam, quo quos saepe
-				suscipit? Eveniet, laboriosam.
-			</p>
-		</div>
+		<iframe
+			src="https://player.vimeo.com/video/404256856?h=26f9cfff48"
+			width="100%"
+			height="600px"
+			frameBorder="0"
+			allow="autoplay; fullscreen; picture-in-picture"
+			allowFullScreen
+		></iframe>
 	);
 	const footerContent = <button>Отправить</button>;
 
@@ -106,7 +100,7 @@ function MainPage() {
 			<Modal
 				active={modalActive}
 				setActive={setModalActive}
-				title="Тестовый заголовок модального окана"
+				title="Тестовый заголовок"
 				body={bodyContent}
 				footer={footerContent}
 			/>
