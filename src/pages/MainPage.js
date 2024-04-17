@@ -15,7 +15,6 @@ function MainPage() {
 			src="https://player.vimeo.com/video/404256856?h=26f9cfff48"
 			width="100%"
 			height="600px"
-			frameBorder="0"
 			allow="autoplay; fullscreen; picture-in-picture"
 			allowFullScreen
 		></iframe>
