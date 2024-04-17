@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import ReactDOM from "react-dom";
+import grid from "../../../styles/grid.module.sass";
 import styles from "./styles.module.sass";
 
 const Modal = ({ active, setActive, title, body, footer }) => {
@@ -22,7 +23,7 @@ const Modal = ({ active, setActive, title, body, footer }) => {
 			onClick={() => setActive(false)}
 		>
 			<div
-				className={`${styles.modal_content} col-md-4`}
+				className={`${styles.modal_content} ${grid["col-md-4"]}`}
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className={styles.modal_header}>
