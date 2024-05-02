@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./styles.module.sass";
+import "./styles.module.sass";
 
 function Input({ type, placeholder, required }) {
 	return (
