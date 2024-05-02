@@ -1,7 +1,6 @@
 import React from "react";
 import Input from "../ui/Input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
-import grid from "../../styles/grid.module.sass";
 import styles from "./styles.module.sass";
 import Switch from "../ui/Switch/Switch";
 
