@@ -1,23 +1,20 @@
 import React from "react";
 import Filter from "../components/Filter/Filter";
-import grid from "../styles/grid.module.sass";
+import Card from "../components/Card/Card";
 
 import data from "../data/DataApartments";
-import Card from "../components/Card/Card";
+
 function Apartments() {
 	return (
 		<>
-			<div className={`${grid["col-lg-3"]} ${grid["col-md-12"]}`}>
+			<div className="lg:w-1/4 md:w-full">
 				<Filter />
 			</div>
-			<div className={`${grid["col-lg-9"]} ${grid["col-md-12"]}`}>
+			<div className="lg:w-3/4 md:w-full">
 				<h2>Результаты поиска</h2>
-				<div className={`${grid["row"]}`}>
+				<div className="flex flex-wrap">
 					{data.map((apartment) => (
-						<div
-							key={apartment.id}
-							className={`${grid["col-md-4"]}`}
-						>
+						<div key={apartment.id} className="w-full md:w-1/3 p-4">
 							<Card
 								address={apartment.address}
 								price={apartment.price}

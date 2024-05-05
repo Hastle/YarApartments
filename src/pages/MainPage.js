@@ -15,7 +15,6 @@ function MainPage() {
 			width="100%"
 			height="600px"
 			allow="autoplay; fullscreen; picture-in-picture"
-			allowFullScreen
 		></iframe>
 	);
 	const footerContent = <button>Отправить</button>;
@@ -42,10 +41,12 @@ function MainPage() {
 
 	return (
 		<>
-			{["light", "regular", "medium", "semi-bold", "bold"].map(
+			{["light", "regular", "medium", "semi", "bold"].map(
 				(weight, index) => (
 					<div key={index} className={grid["col-md-6"]}>
-						<div className={weight}>{renderContent(weight)}</div>
+						<div className={`font-${weight}`}>
+							{renderContent(weight)}
+						</div>
 					</div>
 				),
 			)}
@@ -77,10 +78,7 @@ function MainPage() {
 			</div>
 
 			{data.map((apartment) => (
-				<div
-					key={apartment.id}
-					className={`${grid["col-md-4"]} ${grid["g-3"]}`}
-				>
+				<div key={apartment.id} className="w-full lg:w-1/3 p-3">
 					<Card
 						address={apartment.address}
 						price={apartment.price}
