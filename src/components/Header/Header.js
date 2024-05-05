@@ -2,8 +2,6 @@ import React from "react";
 import "./styles.module.sass";
 import Logotype from "../Logotype/Logotype";
 import MainMenu from "../MainMenu/MainMenu";
-import styles from "./styles.module.sass";
-import grid from "../../styles/grid.module.sass";
 
 function Header() {
 	return (
@@ -19,17 +17,3 @@ function Header() {
 }
 
 export default Header;
-// position: sticky
-// top: 0
-// display: flex
-// height: $nav-height
-// width: 100%
-// z-index: 100
-// align-items: center
-// background: $black
-// +box-shadow
-
-// display: flex
-// position: relative
-// justify-content: space-between
-// align-items: center
