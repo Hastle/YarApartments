@@ -11,7 +11,7 @@ function Apartments() {
 				<Filter />
 			</div>
 			<div className="lg:w-3/4 md:w-full">
-				<h2>Результаты поиска</h2>
+				<h1 className="text-xl">Результаты поиска</h1>
 				<div className="flex flex-wrap">
 					{data.map((apartment) => (
 						<div key={apartment.id} className="w-full md:w-1/3 p-4">
