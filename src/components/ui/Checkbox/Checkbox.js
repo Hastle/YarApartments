@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./styles.module.sass";
 import { FaCheck } from "react-icons/fa";
 
-function Checkbox({ label, checked, disabled, onChange }) {
+function Checkbox({ className, label, checked, disabled, onChange }) {
 	return (
 		<label
-			className={`${styles.checkbox_container} ${disabled ? styles.disabled : ""}`}
+			className={`${styles.checkbox_container} ${className} ${disabled ? styles.disabled : ""}`}
 		>
 			<input
 				type="checkbox"
