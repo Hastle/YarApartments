@@ -15,8 +15,8 @@ function App() {
 		<BrowserRouter>
 			<ScrollToTop />
 			<Routes>
+				<Route path="/" element={<MainPage />} />
 				<Route element={<Layout />}>
-					<Route path="/" element={<MainPage />} />
 					<Route path="/apartments" element={<Apartments />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/contacts" element={<Contacts />} />
