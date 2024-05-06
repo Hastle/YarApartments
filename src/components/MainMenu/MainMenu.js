@@ -2,8 +2,6 @@ import React from "react";
 import { FiMenu } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
 import useOutsideAlerter from "../../hooks/useOutsideAlerter";
-import styles from "./styles.module.sass";
-import grid from "../../styles/grid.module.sass";
 
 function logout() {}
 
@@ -15,45 +13,65 @@ function MainMenu() {
 	let currentUser;
 	return (
 		<>
-			<button className={styles.menu_btn} onClick={toggleOpen} ref={ref}>
+			<button
+				className="flex relative text-white hover:text-green flow"
+				onClick={toggleOpen}
+				ref={ref}
+			>
 				<FiMenu size="24px" />
 			</button>
 			<div
-				className={`${styles.dropdown_menu} ${isOpen ? styles.active : ""} ${grid["col-xl-3"]} ${grid["col-xs12"]} ${grid["p-0"]}`}
+				className={`flex-col absolute top-[calc(100%+21px)] lg:top-[34px] right-0 w-full lg:w-1/4 bg-white overflow-hidden rounded-lg shadow-lg flow ${isOpen ? "flex opacity-100 visible" : "hidden opacity-0 invisible"}`}
 			>
-				<NavLink className={styles.menu_item} to="/">
+				<NavLink className="px-5 py-3 hover:bg-white-hover" to="/">
 					Главная
 				</NavLink>
-				<NavLink className={styles.menu_item} to="/apartments">
+				<NavLink
+					className="px-5 py-3 hover:bg-white-hover"
+					to="/apartments"
+				>
 					Квартиры
 				</NavLink>
-				<NavLink className={styles.menu_item} to="/about">
+				<NavLink className="px-5 py-3 hover:bg-white-hover" to="/about">
 					О нас
 				</NavLink>
-				<NavLink className={styles.menu_item} to="/contacts">
+				<NavLink
+					className="px-5 py-3 hover:bg-white-hover"
+					to="/contacts"
+				>
 					Контакты
 				</NavLink>
 				<hr />
 				{!currentUser ? (
 					<>
-						<Link className={styles.menu_item} to="/login">
+						<Link
+							className="px-5 py-3 hover:bg-white-hover"
+							to="/login"
+						>
 							Зарегистрироваться
 						</Link>
-						<Link className={styles.menu_item} to="/login">
+						<Link
+							className="px-5 py-3 hover:bg-white-hover"
+							to="/login"
+						>
 							Войти
 						</Link>
 					</>
 				) : (
 					<>
-						<Link className={styles.menu_item} to="/profile">
+						<Link
+							className="px-5 py-3 hover:bg-white-hover"
+							to="/profile"
+						>
 							Профиль
 						</Link>
-						<a
-							className={`text--warning ${styles.menu_item}`}
+						<Link
+							className="text-accent px-5 py-3 hover:bg-white-hover"
 							onClick={logout}
+							to="/"
 						>
 							Выйти
-						</a>
+						</Link>
 					</>
 				)}
 			</div>
