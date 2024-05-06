@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import top_bg from "../assets/images/home-bg-1.jpeg";
 import data from "../data/DataApartments";
 import Card from "../components/Card/Card";
