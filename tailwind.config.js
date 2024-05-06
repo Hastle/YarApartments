@@ -22,9 +22,12 @@ module.exports = {
 	},
 	plugins: [],
 };
+
+// z-100 header
 // shadow-lg
 // rounded-lg
 // p-4
 // mb-4
 // flow
 //sm:mx-0 mx-4 для xs
+// py-10 padding у section
