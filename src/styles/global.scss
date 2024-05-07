@@ -1,27 +1,8 @@
-@import "fonts.css";
+@import "fonts.scss";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.font-light {
-    font-family: "MontserratLight", serif
-}
-.font-regular {
-    font-family: "MontserratRegular", serif
-}
-
-.font-medium {
-    font-family: "MontserratMedium", serif
-}
-
-.font-semi-bold {
-    font-family: "MontserratSemiBold", serif
-}
-
-.font-bold {
-    font-family: "MontserratBold", serif
-}
 
 :root {
     box-sizing: border-box;
@@ -67,6 +48,4 @@ h6 {
 p {
     margin: 20px 0;
 }
-.flow {
-    transition: all .25s
-}
+
