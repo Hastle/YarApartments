@@ -1,12 +1,12 @@
 @import "../../../styles/mixins"
 .switch_wrap
-	display: flex
+	display: inline-flex
 	align-items: center
 	margin-bottom: 10px
 .switch_container
 	position: relative
 	width: 40px
-	height: 25px
+	height: 26px
 	margin-right: 10px
 .switch_input
 	display: none
@@ -23,19 +23,18 @@
 	+flow
 .switch_slider:before
 	position: absolute
-	top: 50%
-	transform: translateY(-50%)
 	left: 4px
+	top: 4px
 	content: ""
 	height: 18px
 	width: 18px
 	background: $white
-	border-radius: 50%
+	border-radius: 100%
 	+flow
 input:checked + .switch_slider
 	background: $green
 input:checked + .switch_slider:before
-	transform: translateY(-50%) translateX(14px)
+	transform: translateX(14px)
 .disabled
 	cursor: not-allowed
 .disabled span
