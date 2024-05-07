@@ -14,14 +14,14 @@ function MainMenu() {
 	return (
 		<>
 			<button
-				className="flex relative text-white hover:text-green flow"
+				className="flex relative text-white hover:text-green transition-all"
 				onClick={toggleOpen}
 				ref={ref}
 			>
 				<FiMenu size="24px" />
 			</button>
 			<div
-				className={`flex-col absolute top-[calc(100%+21px)] lg:top-[34px] right-0 w-full lg:w-1/4 bg-white overflow-hidden rounded-lg shadow-lg flow ${isOpen ? "flex opacity-100 visible" : "hidden opacity-0 invisible"}`}
+				className={`flex-col absolute top-[calc(100%+21px)] lg:top-[34px] right-0 w-full lg:w-1/4 bg-white overflow-hidden rounded-lg shadow-lg transition-all ${isOpen ? "flex opacity-100 visible" : "hidden opacity-0 invisible"}`}
 			>
 				<NavLink className="px-5 py-3 hover:bg-white-hover" to="/">
 					Главная

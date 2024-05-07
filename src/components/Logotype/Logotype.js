@@ -5,7 +5,7 @@ function Logotype() {
 	return (
 		<NavLink
 			to="/"
-			className="inline-flex text-white text-xl hover:text-green flow"
+			className="inline-flex text-white text-xl hover:text-green transition-all"
 		>
 			YarApartments.
 		</NavLink>

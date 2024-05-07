@@ -5,7 +5,7 @@ import { FaRubleSign } from "react-icons/fa";
 function Card({ address, price, imageUrl }) {
 	return (
 		<Link to="/{id}">
-			<div className="flex-column bg-white rounded-lg overflow-hidden hover:shadow-lg flow">
+			<div className="flex-column bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all">
 				<img
 					src={imageUrl}
 					alt={address}
