@@ -6,6 +6,7 @@ import Modal from "../components/ui/Modal/Modal";
 import grid from "../styles/grid.module.sass";
 
 import data from "../data/DataApartments";
+import Button from "../components/ui/Button/Button";
 
 function About() {
 	const [modalActive, setModalActive] = useState(false);
@@ -63,17 +64,10 @@ function About() {
 					<Switch disabled label={"Посуточная оплата"} />
 				</div>
 				<hr />
-				<div className="">
-					<button
-						style={{
-							padding: "16px 32px",
-							border: "1px solid #151515",
-							marginTop: "10px",
-						}}
-						onClick={() => setModalActive(true)}
-					>
+				<div className="mt-4">
+					<Button onClick={() => setModalActive(true)}>
 						Модальное окно
-					</button>
+					</Button>
 				</div>
 			</div>
 
