@@ -26,13 +26,7 @@ module.exports = {
 				bold: ["MontserratBold", "serif"],
 			},
 			transitionDuration: {
-				none: "0s",
-				all: "0.25s",
 				DEFAULT: "0.25s",
-				colors: "0.25s",
-				opacity: "0.25s",
-				shadow: "0.25s",
-				transform: "0.25s",
 			},
 		},
 	},
