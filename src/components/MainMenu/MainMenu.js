@@ -14,14 +14,14 @@ function MainMenu() {
 	return (
 		<>
 			<button
-				className="flex relative text-white hover:text-green transition-all"
+				className="relative flex bg-transparent text-white transition-all hover:text-green"
 				onClick={toggleOpen}
 				ref={ref}
 			>
 				<FiMenu size="24px" />
 			</button>
 			<div
-				className={`flex-col absolute top-[calc(100%+21px)] lg:top-[34px] right-0 w-full lg:w-1/4 bg-white overflow-hidden rounded-lg shadow-lg transition-all ${isOpen ? "flex opacity-100 visible" : "hidden opacity-0 invisible"}`}
+				className={`absolute right-0 top-[calc(100%+21px)] w-full flex-col overflow-hidden rounded-lg bg-white shadow-lg transition-all lg:top-[34px] lg:w-1/4 ${isOpen ? "visible flex opacity-100" : "invisible hidden opacity-0"}`}
 			>
 				<NavLink className="px-5 py-3 hover:bg-white-hover" to="/">
 					Главная
@@ -66,7 +66,7 @@ function MainMenu() {
 							Профиль
 						</Link>
 						<Link
-							className="text-accent px-5 py-3 hover:bg-white-hover"
+							className="px-5 py-3 text-accent hover:bg-white-hover"
 							onClick={logout}
 							to="/"
 						>
