@@ -1,7 +1,7 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styles from "./styles.module.sass";
 
-function Switch({ label, checked, disabled, onChange }) {
+const Switch = forwardRef(({ label, checked, disabled, onChange }, ref) => {
 	return (
 		<label className={styles.switch_wrap}>
 			<label
@@ -9,6 +9,7 @@ function Switch({ label, checked, disabled, onChange }) {
 			>
 				<input
 					type="checkbox"
+					ref={ref}
 					checked={checked}
 					disabled={disabled}
 					onChange={onChange}
@@ -19,6 +20,6 @@ function Switch({ label, checked, disabled, onChange }) {
 			{label}
 		</label>
 	);
-}
+});
 
 export default Switch;
