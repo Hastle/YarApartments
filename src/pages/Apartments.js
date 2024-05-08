@@ -7,7 +7,7 @@ import data from "../data/DataApartments";
 function Apartments() {
 	return (
 		<>
-			<div className="lg:w-1/4 md:w-full">
+			<div className="lg:w-1/4 w-full">
 				<Filter />
 			</div>
 			<div className="lg:w-3/4 md:w-full">
