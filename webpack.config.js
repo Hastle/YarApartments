@@ -3,6 +3,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 let mode = "development";
 let target = "web";
@@ -25,6 +27,10 @@ const plugins = [
 
 if (process.env.SERVE) {
 	plugins.push(new ReactRefreshWebpackPlugin());
+}
+
+if (process.env.NODE_ENV === "production") {
+	plugins.push(new BundleAnalyzerPlugin());
 }
 
 module.exports = {
@@ -55,7 +61,18 @@ module.exports = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					"css-loader",
-					"postcss-loader",
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [
+									"postcss-preset-env",
+									"tailwindcss",
+									"autoprefixer",
+								],
+							},
+						},
+					},
 					"sass-loader",
 				],
 			},
@@ -80,3 +97,13 @@ module.exports = {
 		],
 	},
 };
+
+if (mode === "production") {
+	module.exports.optimization = {
+		minimize: true,
+		minimizer: [new TerserPlugin()],
+		splitChunks: {
+			chunks: "all",
+		},
+	};
+}
