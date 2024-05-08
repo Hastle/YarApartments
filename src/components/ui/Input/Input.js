@@ -1,14 +1,8 @@
-import React from "react";
-import "./styles.module.sass";
+import React, { forwardRef } from "react";
+import "./styles.module.scss";
 
-function Input({ type, placeholder, required }) {
-	return (
-		<input
-			type={type}
-			placeholder={placeholder || ""}
-			required={required}
-		/>
-	);
-}
+const Input = forwardRef(({ ...rest }, ref) => {
+	return <input ref={ref} {...rest} />;
+});
 
 export default Input;
