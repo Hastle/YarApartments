@@ -7,8 +7,10 @@ import grid from "../styles/grid.module.sass";
 
 import data from "../data/DataApartments";
 import Button from "../components/ui/Button/Button";
+import { useForm } from "react-hook-form";
 
 function About() {
+	const { register } = useForm();
 	const [modalActive, setModalActive] = useState(false);
 	const bodyContent = (
 		<iframe
@@ -54,14 +56,41 @@ function About() {
 
 			<div className={grid["col-md-6"]}>
 				<div className="">
-					<Checkbox label={"парковочное место"} />
-					<Checkbox checked disabled label={"балкон"} />
-					<Checkbox disabled label={"с мебелью"} />
+					<Checkbox
+						name="additional.noPrepayment"
+						register={register}
+						label={"парковочное место"}
+					/>
+					<Checkbox
+						name="additional.noPrepayment"
+						register={register}
+						checked
+						disabled
+						label={"балкон"}
+					/>
+					<Checkbox
+						name="additional.noPrepayment"
+						register={register}
+						disabled
+						label={"с мебелью"}
+					/>
 				</div>
 				<div className="">
-					<Switch label={"Квартиры от владельца"} />
-					<Switch checked disabled label={"Без предоплаты"} />
-					<Switch disabled label={"Посуточная оплата"} />
+					<Switch
+						register={register}
+						label={"Квартиры от владельца"}
+					/>
+					<Switch
+						register={register}
+						checked
+						disabled
+						label={"Без предоплаты"}
+					/>
+					<Switch
+						register={register}
+						disabled
+						label={"Посуточная оплата"}
+					/>
 				</div>
 				<hr />
 				<div className="mt-4">
