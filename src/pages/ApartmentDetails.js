@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useApartmentDetails } from "../hooks/useApartmentDetails";
+import useApartmentDetails from "../hooks/useApartmentDetails";
 
 function ApartmentDetails() {
 	let { id } = useParams();
