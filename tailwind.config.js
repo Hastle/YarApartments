@@ -39,5 +39,7 @@ module.exports = {
 // p-4
 // mb-4
 // flow
-//sm:mx-0 mx-4 для xs
+// sm:mx-0 mx-4 для xs
 // py-10 padding у section
+// my-4 верхний
+// space-x-4 между
