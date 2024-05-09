@@ -4,29 +4,31 @@ import data from "../data/DataApartments";
 import Card from "../components/Card/Card";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import Input from "../components/ui/Input/Input";
 
 function MainPage() {
 	return (
 		<>
 			<Header />
 			<div
-				className=" flex items-center w-full h-[700px] py-10 bg-cover bg-right-bottom"
+				className=" flex h-[calc(100vh_-_70px)] w-full items-center bg-cover bg-right-bottom py-10 lg:h-[700px]"
 				style={{ backgroundImage: `url(${top_bg})` }}
 			>
-				<div className="max-w-screen-xl mx-auto w-full p-4 rounded-lg backdrop-blur-xl">
+				<div className="mx-auto w-full max-w-screen-xl rounded-lg p-4 backdrop-blur-xl">
 					<form action="">
-						<input type="text" />
-						<input type="text" />
-						<input type="text" />
-						<input type="text" />
+						<Input />
+						<Input />
+						<Input />
+						<Input />
 					</form>
 				</div>
 			</div>
 			<div className="container mx-auto">
-				<div className="flex flex-wrap py-10 w-full">
+				<div className="flex w-full flex-wrap py-10">
 					{data.map((apartment) => (
-						<div key={apartment.id} className="w-full lg:w-1/3 p-3">
+						<div key={apartment.id} className="w-full p-3 lg:w-1/3">
 							<Card
+								id={apartment.id}
 								address={apartment.address}
 								price={apartment.price}
 								imageUrl={apartment.imageUrl}

@@ -2,20 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaRubleSign } from "react-icons/fa";
 
-function Card({ address, price, imageUrl }) {
+function Card({ id, address, price, imageUrl }) {
 	return (
-		<Link to="/{id}">
-			<div className="flex-column bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all">
+		<Link to={`/apartments/${id}`}>
+			<div className="flex-column overflow-hidden rounded-lg bg-white transition-all hover:shadow-lg">
 				<img
 					src={imageUrl}
 					alt={address}
-					className="lg:h-80 md:h-70 w-full object-cover"
+					className="md:h-70 w-full object-cover lg:h-80"
 				/>
 				<div className="flex-column p-4">
-					<div className="flex items-center font-semi mb-4">
+					<div className="font-semi mb-4 flex items-center">
 						{price} <FaRubleSign />
 					</div>
-					<div className="overflow-hidden whitespace-nowrap overflow-ellipsis color-grey">
+					<div className="color-grey overflow-hidden overflow-ellipsis whitespace-nowrap">
 						{address}
 					</div>
 				</div>
