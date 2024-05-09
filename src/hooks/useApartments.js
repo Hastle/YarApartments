@@ -13,10 +13,10 @@ const useApartments = () => {
 					`${process.env.API_URL}/apartments`,
 				);
 				setApartments(response.data);
-				setIsLoading(false); // Устанавливаем состояние isLoading в false после успешной загрузки
+				setIsLoading(false);
 			} catch (err) {
 				setError(err);
-				setIsLoading(false); // Устанавливаем состояние isLoading в false в случае ошибки
+				setIsLoading(false);
 			}
 		};
 
