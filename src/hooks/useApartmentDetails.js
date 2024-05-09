@@ -2,10 +2,16 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 const fetchApartmentDetails = async (id) => {
-	const { data } = await axios.get(`${process.env.API_URL}/apartments/${id}`);
-	return data;
+	const response = await axios.get(`${process.env.API_URL}/apartments/${id}`);
+	return response.data;
 };
 
-export const useApartmentDetails = (id) => {
-	return useQuery(["apartmentDetails", id], () => fetchApartmentDetails(id));
+const useApartmentDetails = (id) => {
+	const { data, isLoading, error } = useQuery(["apartmentDetails", id], () =>
+		fetchApartmentDetails(id),
+	);
+
+	return { apartmentDetails: data, isLoading, error };
 };
+
+export default useApartmentDetails;
