@@ -94,14 +94,17 @@ function About() {
 				</div>
 				<hr />
 				<div className="mt-4">
-					<Button onClick={() => setModalActive(true)}>
+					<Button
+						className={"secondary-button"}
+						onClick={() => setModalActive(true)}
+					>
 						Модальное окно
 					</Button>
 				</div>
 			</div>
 
 			{data.map((apartment) => (
-				<div key={apartment.id} className="w-full lg:w-1/3 p-3">
+				<div key={apartment.id} className="w-full p-3 lg:w-1/3">
 					<Card
 						address={apartment.address}
 						price={apartment.price}
