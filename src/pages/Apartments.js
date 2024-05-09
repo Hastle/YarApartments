@@ -7,9 +7,9 @@ import data from "../data/DataApartments";
 function Apartments() {
 	// const { apartments, isLoading, error } = useApartments();
 	//
-	// if (isLoading) return <div>Loading...</div>;
-	// if (error) return <div>An error has occurred: {error.message}</div>;
-	//
+	// if (isLoading) return <div>Загрузка...</div>;
+	// if (error) return <div>Произошла ошибка: {error.message}</div>;
+	// if (!apartments) return <div>Данные не доступны</div>;
 
 	return (
 		<>
