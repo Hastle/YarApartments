@@ -1,8 +1,12 @@
-.primary_button {
+button {
+	background: transparent;
+	outline: none !important;
+}
+.primary-button {
 	@apply
 	bg-black
-	py-4
-	px-10
+	py-2.5
+	px-4
 	rounded-md
 	border
 	border-black
@@ -11,7 +15,7 @@
 	hover:text-black
 	transition-all;
 }
-.secondary_button {
+.secondary-button {
 	@apply
 	bg-white
 	py-4
