@@ -43,20 +43,24 @@ function Filter() {
 				</button>
 			</div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className="font-bold text-base">Цена</div>
-				<div className="flex flex-wrap">
+				<div className="my-4 font-bold text-base">Цена</div>
+				<div className="flex space-x-4">
 					<Input
+						className={"w-1/2"}
 						type="text"
 						placeholder="От"
 						{...register("priceFrom")}
 					/>
 					<Input
+						className={"w-1/2"}
 						type="text"
 						placeholder="До"
 						{...register("priceTo")}
 					/>
 				</div>
-				<div className="font-bold text-base">Количество комнат</div>
+				<div className="my-4 font-bold text-base">
+					Количество комнат
+				</div>
 				<div className="flex flex-wrap content-evenly">
 					{[1, 2, 3, 4].map((index) => (
 						<Checkbox
@@ -68,7 +72,7 @@ function Filter() {
 						/>
 					))}
 				</div>
-				<div className="font-bold text-base">Дополниaтельно</div>
+				<div className="my-4 font-bold text-base">Дополниaтельно</div>
 				<Checkbox
 					label={"Без залога"}
 					name="additional.noDeposit"
@@ -89,7 +93,12 @@ function Filter() {
 					name="additional.pets"
 					register={register}
 				/>
-				<Button type="submit">Применить фильтры</Button>
+				<Button
+					type="submit"
+					className={"primary-button mt-4 lg:w-full"}
+				>
+					Применить фильтры
+				</Button>
 			</form>
 		</div>
 	);
