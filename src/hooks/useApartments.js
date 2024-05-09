@@ -1,29 +1,15 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 import axios from "axios";
 
+const fetchApartments = async () => {
+	const response = await axios.get(`${process.env.API_URL}/apartments`);
+	return response.data;
+};
+
 const useApartments = () => {
-	const [apartments, setApartments] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const { data, isLoading, error } = useQuery("apartments", fetchApartments);
 
-	useEffect(() => {
-		const fetchApartments = async () => {
-			try {
-				const response = await axios.get(
-					`${process.env.API_URL}/apartments`,
-				);
-				setApartments(response.data);
-				setIsLoading(false);
-			} catch (err) {
-				setError(err);
-				setIsLoading(false);
-			}
-		};
-
-		fetchApartments();
-	}, []);
-
-	return { apartments, isLoading, error };
+	return { apartments: data, isLoading, error };
 };
 
 export default useApartments;
