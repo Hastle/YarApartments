@@ -1,10 +1,11 @@
 input {
+	background: inherit !important;
+	padding: 0.5rem 1rem !important;
 	@apply
-	p-3
 	rounded-lg
 	border
 	border-black
-	outline-black
+	outline-none
 }
 
 //@import "../../../styles/_mixins"
