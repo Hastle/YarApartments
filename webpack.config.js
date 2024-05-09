@@ -1,5 +1,4 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
@@ -14,9 +13,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const plugins = [
-	new MiniCssExtractPlugin({
-		filename: "[name].css",
-	}),
 	new HtmlWebpackPlugin({
 		template: "./src/index.html",
 	}),
@@ -59,7 +55,7 @@ module.exports = {
 			{
 				test: /\.(s[ac]|c)ss$/i,
 				use: [
-					MiniCssExtractPlugin.loader,
+					"style-loader",
 					"css-loader",
 					{
 						loader: "postcss-loader",
