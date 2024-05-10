@@ -14,7 +14,7 @@ function MainMenu() {
 	return (
 		<>
 			<button
-				className="relative flex bg-transparent text-white transition-all hover:text-green"
+				className="relative flex text-white transition-all hover:text-green"
 				onClick={toggleOpen}
 				ref={ref}
 			>
