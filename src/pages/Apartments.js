@@ -2,12 +2,13 @@ import React from "react";
 import Filter from "../components/Filter/Filter";
 import Card from "../components/Card/Card";
 import useApartments from "../hooks/useApartments";
+import Loader from "../components/ui/Loader/Loader";
 import data from "../data/DataApartments";
 
 function Apartments() {
 	// const { apartments, isLoading, error } = useApartments();
 	//
-	// if (isLoading) return <div>Загрузка...</div>;
+	// if (isLoading) return <Loader />;
 	// if (error) return <div>Произошла ошибка: {error.message}</div>;
 	// if (!apartments) return <div>Данные не доступны</div>;
 
