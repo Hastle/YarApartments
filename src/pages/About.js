@@ -8,6 +8,7 @@ import grid from "../styles/grid.module.sass";
 import data from "../data/DataApartments";
 import Button from "../components/ui/Button/Button";
 import { useForm } from "react-hook-form";
+import Loader from "../components/ui/Loader/Loader";
 
 function About() {
 	const { register } = useForm();
@@ -100,6 +101,9 @@ function About() {
 					>
 						Модальное окно
 					</Button>
+				</div>
+				<div className="h-[200px] w-full">
+					<Loader />
 				</div>
 			</div>
 
