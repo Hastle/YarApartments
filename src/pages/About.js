@@ -102,7 +102,7 @@ function About() {
 						Модальное окно
 					</Button>
 				</div>
-				<div className="h-[200px] w-full">
+				<div className="relative h-[200px] w-full">
 					<Loader />
 				</div>
 			</div>
