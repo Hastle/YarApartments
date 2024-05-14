@@ -4,9 +4,9 @@ import MainMenu from "../MainMenu/MainMenu";
 
 function Header() {
 	return (
-		<header className="sticky top-0 flex h-[--nav-height] w-full items-center bg-black shadow-lg">
+		<header className="sticky top-0 z-50 flex h-[--nav-height] w-full items-center bg-black shadow-lg">
 			<div className="container mx-auto">
-				<div className="mx-4 flex items-center justify-between sm:mx-0">
+				<div className="relative mx-4 flex items-center justify-between sm:mx-0">
 					<Logotype />
 					<MainMenu />
 				</div>
