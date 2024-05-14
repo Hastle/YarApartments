@@ -4,6 +4,8 @@ import Card from "../components/Card/Card";
 import useApartments from "../hooks/useApartments";
 import Loader from "../components/ui/Loader/Loader";
 import data from "../data/DataApartments";
+import { Placemark, YMaps, Map } from "@pbe/react-yandex-maps";
+import YandexMap from "../components/YandexMap/YandexMap";
 
 function Apartments() {
 	// const { apartments, isLoading, error } = useApartments();
@@ -32,6 +34,13 @@ function Apartments() {
 							</div>
 						))}
 					</div>
+					<YandexMap
+						className={"h-[400px] w-full py-3"}
+						center={[57.622427, 39.887067]}
+						zoom={12}
+						controls={["fullscreenControl"]}
+						modules={["control.FullscreenControl"]}
+					/>
 				</div>
 			</div>
 		</>
