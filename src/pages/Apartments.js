@@ -4,8 +4,7 @@ import Card from "../components/Card/Card";
 import useApartments from "../hooks/useApartments";
 import Loader from "../components/ui/Loader/Loader";
 import data from "../data/DataApartments";
-import { Placemark, YMaps, Map } from "@pbe/react-yandex-maps";
-import YandexMap from "../components/YandexMap/YandexMap";
+import MultiPlacemarkMap from "../components/MultiPlacemarkMap/MultiPlacemarkMap";
 
 function Apartments() {
 	// const { apartments, isLoading, error } = useApartments();
@@ -13,6 +12,13 @@ function Apartments() {
 	// if (isLoading) return <Loader />;
 	// if (error) return <div>Произошла ошибка: {error.message}</div>;
 	// if (!apartments) return <div>Данные не доступны</div>;
+	// console.log(process.env.API_YANDEX_KEY);
+
+	const locations = data.map((apartment) => ({
+		coordinates: [apartment.latitude, apartment.longitude],
+		hint: apartment.address,
+		balloon: `<div><strong>${apartment.address}</strong><br/>${apartment.price} руб.</div>`,
+	}));
 
 	return (
 		<>
@@ -34,12 +40,13 @@ function Apartments() {
 							</div>
 						))}
 					</div>
-					<YandexMap
-						className={"h-[400px] w-full py-3"}
+					<MultiPlacemarkMap
+						className="h-[400px] w-full py-3"
 						center={[57.622427, 39.887067]}
 						zoom={12}
 						controls={["fullscreenControl"]}
 						modules={["control.FullscreenControl"]}
+						locations={locations}
 					/>
 				</div>
 			</div>
