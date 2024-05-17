@@ -18,6 +18,19 @@ button {
 .secondary-button {
 	@apply
 	bg-white
+	py-2.5
+	px-4
+	rounded-md
+	border
+	border-black
+	text-black
+	hover:bg-black
+	hover:text-white
+	transition-all;
+}
+.action-button {
+	@apply
+	bg-green
 	py-4
 	px-10
 	rounded-md

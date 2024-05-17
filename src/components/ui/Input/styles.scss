@@ -1,11 +1,14 @@
 input {
-	background: inherit !important;
+	background: transparent !important;
 	padding: 0.5rem 1rem !important;
 	@apply
 	rounded-lg
 	border
 	border-black
 	outline-none
+}
+input:-webkit-autofill {
+	box-shadow: 0 0 0 30px #f8f9fa inset !important;
 }
 
 //@import "../../../styles/_mixins"

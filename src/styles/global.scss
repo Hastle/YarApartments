@@ -22,29 +22,30 @@ body {
     min-height: 100dvh;
 }
 h1 {
-    font-size: 3.25rem;
-    line-height: normal;
+    @apply
+    text-2xl
 }
 h2 {
-    font-size: 3rem;
-    line-height: normal;
+    @apply
+    text-xl
 }
 h3 {
-    font-size: 2.75rem;
-    line-height: normal;
+    @apply
+    text-lg
 }
 h4 {
-    font-size: 2.5rem;
-    line-height: normal;
+    @apply
+    text-base
 }
 h5 {
-    font-size: 2.25rem;
-    line-height: normal;
+    @apply
+    text-base
 }
 h6 {
-    font-size: 2rem;
-    line-height: normal;
+    @apply
+    text-base
 }
+
 p {
     margin: 20px 0;
 }
