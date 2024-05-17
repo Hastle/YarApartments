@@ -7,8 +7,8 @@ function Layout() {
 	return (
 		<>
 			<Header />
-			<div className="container mx-auto">
-				<div className="flex flex-wrap">
+			<div className="container mx-auto ">
+				<div className="flex min-h-[calc(100vh-294px)] flex-wrap">
 					<Outlet />
 				</div>
 			</div>
