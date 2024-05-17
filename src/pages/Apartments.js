@@ -27,7 +27,7 @@ function Apartments() {
 			</div>
 			<div className="md:w-full lg:w-3/4">
 				<div className="p-3">
-					<h1 className="text-xl">Результаты поиска</h1>
+					<h1>Результаты поиска</h1>
 					<div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
 						{data.map((apartment) => (
 							<div key={apartment.id}>
