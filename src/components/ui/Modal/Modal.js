@@ -1,42 +1,37 @@
 import React, { useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import ReactDOM from "react-dom";
-import grid from "../../../styles/grid.module.sass";
-import styles from "./styles.module.sass";
 
 const Modal = ({ active, setActive, title, body, footer }) => {
 	useEffect(() => {
 		if (active) {
-			document.documentElement.classList.add(styles.modal_fixed);
+			document.documentElement.classList.add("overflow-y-hidden");
 		}
 		return () => {
-			document.documentElement.removeAttribute("class");
+			document.documentElement.classList.remove("overflow-y-hidden");
 		};
 	}, [active]);
-
 	if (!active) return null;
 	return ReactDOM.createPortal(
 		<div
-			className={
-				active ? `${styles.modal} ${styles.active}` : styles.modal
-			}
+			className={`fixed left-0 top-0 z-[100] h-[100vh] w-[100vw] items-center justify-center bg-black/40 transition-all ${active ? "pointer-events-auto flex opacity-100" : "pointer-events-none hidden opacity-0"}`}
 			onClick={() => setActive(false)}
 		>
 			<div
-				className={`${styles.modal_content} ${grid["col-md-4"]}`}
+				className="flex flex-col rounded-lg bg-white p-4  md:w-1/2 lg:w-1/3 "
 				onClick={(e) => e.stopPropagation()}
 			>
-				<div className={styles.modal_header}>
+				<div className="relative flex justify-center">
 					<button
-						className={styles.close_btn}
+						className="absolute left-0 top-0 flex items-center"
 						onClick={() => setActive(false)}
 					>
-						<MdClose />
+						<MdClose size="20" />
 					</button>
-					<h3>{title}</h3>
+					<h1>{title}</h1>
 				</div>
-				<div className={styles.modal_body}>{body}</div>
-				<div className={styles.modal_footer}>{footer}</div>
+				<div className="flex py-4">{body}</div>
+				<div className="flex">{footer}</div>
 			</div>
 		</div>,
 		document.getElementById("modal-root"),
