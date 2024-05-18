@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
-function Profile() {
-	return <div>Profile</div>;
-}
+const Profile = () => {
+	const { user } = useContext(AuthContext);
+
+	return (
+		<div>
+			<h2>Профиль</h2>
+			<p>Имя пользователя: {user?.sub}</p>
+			<p>Роль: {user?.roles}</p>
+		</div>
+	);
+};
 
 export default Profile;
