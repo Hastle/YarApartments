@@ -2,22 +2,19 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "../ui/Input/Input";
 import Button from "../ui/Button/Button";
-import useRegister from "../../hooks/useRegister";
+import useAuth from "../../hooks/useAuth";
 
-const AuthForm = () => {
+const RegisterForm = () => {
 	const { register, handleSubmit, reset } = useForm();
-	const { mutate: registerUser, isLoading, isError, error } = useRegister();
+	const { authenticate, isLoading, isError, error } = useAuth();
 
-	const onSubmit = (data) => {
-		registerUser(data, {
-			onSuccess: (response) => {
-				console.log(response);
-				reset();
-			},
-			onError: (error) => {
-				console.error(error);
-			},
-		});
+	const onSubmit = async (data) => {
+		try {
+			await authenticate.mutateAsync({ userData: data, isLogin: false });
+			reset();
+		} catch (error) {
+			console.error("Registration failed:", error);
+		}
 	};
 
 	return (
@@ -61,4 +58,4 @@ const AuthForm = () => {
 	);
 };
 
-export default AuthForm;
+export default RegisterForm;
