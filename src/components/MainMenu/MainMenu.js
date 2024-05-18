@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import { FiMenu } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
 import useOutsideAlerter from "../../hooks/useOutsideAlerter";
-
-function logout() {}
 
 function MainMenu() {
 	const { ref, isOpen, setIsOpen } = useOutsideAlerter(false);
 	const toggleOpen = () => {
 		isOpen === true ? setIsOpen(false) : setIsOpen(true);
 	};
-	let currentUser;
+	const { user, logout } = useContext(AuthContext);
 	return (
 		<>
 			<button
@@ -42,17 +41,17 @@ function MainMenu() {
 					Контакты
 				</NavLink>
 				<hr />
-				{!currentUser ? (
+				{!user ? (
 					<>
 						<Link
 							className="px-5 py-3 hover:bg-white-hover"
-							to="/login"
+							to="/signup"
 						>
 							Зарегистрироваться
 						</Link>
 						<Link
 							className="px-5 py-3 hover:bg-white-hover"
-							to="/login"
+							to="/signin"
 						>
 							Войти
 						</Link>
