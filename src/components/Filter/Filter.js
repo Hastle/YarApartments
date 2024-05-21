@@ -5,7 +5,7 @@ import Checkbox from "../ui/Checkbox/Checkbox";
 import Button from "../ui/Button/Button";
 
 function Filter() {
-	const { register, handleSubmit, reset } = useForm();
+	const { register, handleSubmit } = useForm();
 
 	const onSubmit = (data) => {
 		console.log(data);
