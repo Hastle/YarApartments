@@ -3,7 +3,7 @@ import axios from "axios";
 
 const fetchCoordinates = async (address) => {
 	const apiKey = process.env.API_YANDEX_KEY;
-	const geocodeUrl = `https://geocode-maps.yandex.ru/1.x/?apikey=${apiKey}&geocode=${encodeURIComponent(address)}&format=json`;
+	const geocodeUrl = `https://geocode-maps.yandex.ru/1.x/?apikey=${apiKey}&geocode=${encodeURIComponent(address)}&lang=ru_RU&format=json`;
 
 	const response = await axios.get(geocodeUrl);
 	const geoObject =
