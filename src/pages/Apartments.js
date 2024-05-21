@@ -3,8 +3,9 @@ import Filter from "../components/Filter/Filter";
 import Card from "../components/Card/Card";
 import useApartments from "../hooks/useApartments";
 import Loader from "../components/ui/Loader/Loader";
-import data from "../data/DataApartments";
+import DataApartments from "../data/DataApartments";
 import MultiPlacemarkMap from "../components/MultiPlacemarkMap/MultiPlacemarkMap";
+import useGeocoding from "../hooks/useGeocoding";
 
 function Apartments() {
 	// const { apartments, isLoading, error } = useApartments();
@@ -14,22 +15,25 @@ function Apartments() {
 	// if (!apartments) return <div>Данные не доступны</div>;
 	// console.log(process.env.API_YANDEX_KEY);
 
-	const locations = data.map((apartment) => ({
+	const locations = DataApartments.map((apartment) => ({
 		coordinates: [apartment.latitude, apartment.longitude],
 		hint: apartment.address,
-		balloon: `<div><strong>${apartment.address}</strong><br/>${apartment.price} руб.</div>`,
+		balloon: `<Link><strong>${apartment.address}</strong><br/>${apartment.price} руб.</Link>`,
 	}));
+
+	// const result = useGeocoding(DataApartments[2].address);
+	// console.log(result);
 
 	return (
 		<>
 			<div className="w-full lg:w-1/4">
 				<Filter />
 			</div>
-			<div className="md:w-full lg:w-3/4">
+			<div className="w-full lg:w-3/4">
 				<div className="p-3">
-					<h1>Результаты поиска</h1>
+					<h1 className="my-4">Результаты поиска</h1>
 					<div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
-						{data.map((apartment) => (
+						{DataApartments.map((apartment) => (
 							<div key={apartment.id}>
 								<Card
 									id={apartment.id}
