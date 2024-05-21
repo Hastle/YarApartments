@@ -21,6 +21,10 @@ body {
     flex-direction: column;
     min-height: 100dvh;
 }
+hr {
+    @apply
+    w-full
+}
 h1 {
     @apply
     text-2xl
