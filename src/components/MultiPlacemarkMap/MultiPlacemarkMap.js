@@ -25,6 +25,7 @@ const MultiPlacemarkMap = ({
 					iconImageHref: markerIcon,
 					iconImageSize: [30, 42],
 					iconImageOffset: [-15, -42],
+					lang: "ru_RU",
 				}}
 			/>
 		));
