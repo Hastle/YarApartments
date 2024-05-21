@@ -22,7 +22,12 @@ function App() {
 	return (
 		<AuthProvider>
 			<QueryClientProvider client={queryClient}>
-				<YMaps query={{ lang: "en_RU" }}>
+				<YMaps
+					query={{
+						lang: "ru_RU",
+						apikey: process.env.API_YANDEX_KEY,
+					}}
+				>
 					<BrowserRouter>
 						<ScrollToTop />
 						<Routes>
