@@ -3,15 +3,18 @@ import { useForm } from "react-hook-form";
 import Input from "../ui/Input/Input";
 import Button from "../ui/Button/Button";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
 	const { register, handleSubmit, reset } = useForm();
 	const { authenticate, isLoading, isError, error } = useAuth();
+	const navigate = useNavigate();
 
 	const onSubmit = async (data) => {
 		try {
 			await authenticate.mutateAsync({ userData: data, isLogin: false });
 			reset();
+			navigate("/signin");
 		} catch (error) {
 			console.error("Registration failed:", error);
 		}
