@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaVk, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 import Logotype from "../Logotype/Logotype";
 import DataAreaList from "../../data/DataAreaList";
 import DataSocialList from "../../data/DataSocialList";
