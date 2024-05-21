@@ -1,11 +1,14 @@
 input {
-	background: transparent !important;
 	padding: 0.5rem 1rem !important;
 	@apply
+	bg-light
+	px-2
+	py-4
 	rounded-lg
 	border
 	border-black
 	outline-none
+	h-10
 }
 input:-webkit-autofill {
 	box-shadow: 0 0 0 30px #f8f9fa inset !important;

@@ -31,13 +31,11 @@ button {
 .action-button {
 	@apply
 	bg-green
-	py-4
-	px-10
+	py-2
+	px-5
 	rounded-md
-	border
-	border-black
 	text-black
 	hover:bg-black
-	hover:text-white
+	hover:text-green
 	transition-all;
 }
