@@ -11,38 +11,15 @@ function Filter() {
 		console.log(data);
 	};
 
-	const handleReset = () => {
-		reset({
-			priceFrom: "",
-			priceTo: "",
-			rooms: {
-				1: false,
-				2: false,
-				3: false,
-				4: false,
-			},
-			additional: {
-				noDeposit: false,
-				noPrepayment: false,
-				balcony: false,
-				pets: false,
-			},
-		});
-	};
-
 	return (
 		<div className="p-3">
-			<div className="flex justify-between">
-				<div className="font-bold text-base">Фильтры</div>
-				<button
-					className="font-bold text-base"
-					type="reset"
-					onClick={handleReset}
-				>
-					Сбросить
-				</button>
-			</div>
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<div className="flex justify-between">
+					<div className="font-bold text-base">Фильтры</div>
+					<button className="font-bold text-base" type="reset">
+						Сбросить
+					</button>
+				</div>
 				<div className="my-4 font-bold text-base">Цена</div>
 				<div className="flex space-x-4">
 					<Input
