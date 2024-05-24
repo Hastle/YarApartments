@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import Input from "../ui/Input/Input";
 import Checkbox from "../ui/Checkbox/Checkbox";
 import Button from "../ui/Button/Button";
+import DataAreaList from "../../data/DataAreaList";
+import Select from "../ui/Select/Select";
 
 function Filter() {
 	const { register, handleSubmit } = useForm();
@@ -34,6 +36,21 @@ function Filter() {
 						placeholder="До"
 						{...register("priceTo")}
 					/>
+				</div>
+				<div className="my-4 font-bold text-base">Район</div>
+				<div className="flex space-x-4">
+					<Select
+						name="area"
+						label={"Выбрать район"}
+						register={register}
+						className={"w-full"}
+					>
+						{DataAreaList.map((area) => (
+							<option key={area.id} value={area.id}>
+								{area.name}
+							</option>
+						))}
+					</Select>
 				</div>
 				<div className="my-4 font-bold text-base">
 					Количество комнат
