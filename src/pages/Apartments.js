@@ -4,7 +4,7 @@ import Card from "../components/Card/Card";
 import useApartments from "../hooks/useApartments";
 import Loader from "../components/ui/Loader/Loader";
 import DataApartments from "../data/DataApartments";
-import MultiPlacemarkMap from "../components/MultiPlacemarkMap/MultiPlacemarkMap";
+import MultiPlacemarkMap from "../components/Map/MultiPlacemarkMap";
 import useGeocoding from "../hooks/useGeocoding";
 
 function Apartments() {
@@ -31,7 +31,9 @@ function Apartments() {
 			</div>
 			<div className="w-full lg:w-3/4">
 				<div className="p-3">
-					<h1 className="my-4">Результаты поиска</h1>
+					<h1 className="my-4">
+						Результаты поиска: найдено 6 объектов
+					</h1>
 					<div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
 						{DataApartments.map((apartment) => (
 							<div key={apartment.id}>
@@ -39,7 +41,7 @@ function Apartments() {
 									id={apartment.id}
 									address={apartment.address}
 									price={apartment.price}
-									imageUrl={apartment.imageUrl}
+									imageUrl={apartment.image[0]}
 								/>
 							</div>
 						))}
