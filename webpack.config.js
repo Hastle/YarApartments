@@ -40,7 +40,9 @@ module.exports = {
 		hot: true,
 		port: 3000,
 		open: false,
-		historyApiFallback: true,
+		historyApiFallback: {
+			index: "/index.html",
+		},
 	},
 
 	output: {
