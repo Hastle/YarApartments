@@ -106,16 +106,6 @@ function About() {
 					<Loader />
 				</div>
 			</div>
-
-			{data.map((apartment) => (
-				<div key={apartment.id} className="w-full p-3 lg:w-1/3">
-					<Card
-						address={apartment.address}
-						price={apartment.price}
-						imageUrl={apartment.imageUrl}
-					/>
-				</div>
-			))}
 			<Modal
 				active={modalActive}
 				setActive={setModalActive}
