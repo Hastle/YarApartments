@@ -1,12 +1,13 @@
 import React from "react";
+import "./styles.scss";
 
-const Select = ({ label, register, name, ...props }) => {
+const Select = ({ label, register, name, className = "", ...props }) => {
 	return (
 		<select
 			{...register(name)}
 			name={name}
 			id={name}
-			className="h-10 rounded-md border border-black px-4 py-2 outline-none focus:outline-none"
+			className={className}
 			{...props}
 		>
 			<option value="">{label}</option>
