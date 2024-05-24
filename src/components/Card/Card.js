@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaRubleSign } from "react-icons/fa";
+import { MdCurrencyRuble } from "react-icons/md";
 
 function Card({ id, address, price, imageUrl }) {
 	return (
@@ -9,11 +9,11 @@ function Card({ id, address, price, imageUrl }) {
 				<img
 					src={imageUrl}
 					alt={address}
-					className="md:h-70 w-full object-cover lg:h-80"
+					className="h-75 w-full object-cover lg:h-80"
 				/>
 				<div className="flex-column p-4">
 					<div className="font-semi mb-4 flex items-center">
-						{price} <FaRubleSign />
+						{price} <MdCurrencyRuble />
 					</div>
 					<div className="color-grey overflow-hidden overflow-ellipsis whitespace-nowrap">
 						{address}
