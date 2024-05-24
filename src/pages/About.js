@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import Checkbox from "../components/ui/Checkbox/Checkbox";
 import Switch from "../components/ui/Switch/Switch";
-import Card from "../components/Card/Card";
 import Modal from "../components/ui/Modal/Modal";
 import grid from "../styles/grid.module.sass";
-
-import data from "../data/DataApartments";
 import Button from "../components/ui/Button/Button";
 import { useForm } from "react-hook-form";
 import Loader from "../components/ui/Loader/Loader";
