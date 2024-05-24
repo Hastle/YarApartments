@@ -63,12 +63,10 @@ function Footer() {
 						))}
 					</ul>
 				</div>
-				<div className="w-full flex-col p-3 text-center">
+				<div className="w-full flex-col space-x-5 p-3 text-center">
 					<hr className="w-full border-grey/60" />
-					<p>
-						Адрес: 150013, г. Ярославль ул. Свободы, 72 ИП Лыков
-						Е.С. ИНН 372800561920
-					</p>
+					<p>ИП Лыков Е.С. ИНН 372800561920</p>
+					<p>Адрес: 150013, г. Ярославль ул. Свободы, 72</p>
 				</div>
 			</div>
 		</footer>
