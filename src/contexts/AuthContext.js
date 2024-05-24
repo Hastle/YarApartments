@@ -4,8 +4,9 @@ import { decodeToken } from "../utils/jwtUtil";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-	const [user, setUser] = useState(null);
 	const [token, setToken] = useState(null);
+	const [user, setUser] = useState(null);
+	const [role, setRole] = useState(null);
 
 	useEffect(() => {
 		const storedToken = localStorage.getItem("token");
@@ -14,6 +15,7 @@ export const AuthProvider = ({ children }) => {
 			if (decodedToken) {
 				setToken(storedToken);
 				setUser(decodedToken);
+				setRole(decodedToken.roles);
 			}
 		}
 
@@ -28,17 +30,19 @@ export const AuthProvider = ({ children }) => {
 			setToken(token);
 			localStorage.setItem("token", token);
 			setUser(decodedToken);
+			setRole(decodedToken.roles);
 		}
 	};
 
 	const logout = () => {
-		setUser(null);
 		setToken(null);
+		setUser(null);
+		setRole(null);
 		localStorage.removeItem("token");
 	};
 
 	return (
-		<AuthContext.Provider value={{ user, token, login, logout }}>
+		<AuthContext.Provider value={{ token, user, role, login, logout }}>
 			{children}
 		</AuthContext.Provider>
 	);
