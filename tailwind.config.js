@@ -7,6 +7,7 @@ module.exports = {
 				accent: "#f23a2e",
 				"accent-hover": "#eb1c0f",
 				grey: "#8d8d8d",
+				placeholder: "rgb(156, 163, 176)",
 				dark: "#445963",
 				yellow: "#fef8e0",
 				pink: "#ffcdd2",
