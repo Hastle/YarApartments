@@ -3,14 +3,6 @@ import { MdClose } from "react-icons/md";
 import ReactDOM from "react-dom";
 
 const Modal = ({ active, setActive, title, body, footer }) => {
-	useEffect(() => {
-		if (active) {
-			document.documentElement.classList.add("overflow-y-hidden");
-		}
-		return () => {
-			document.documentElement.classList.remove("overflow-y-hidden");
-		};
-	}, [active]);
 	if (!active) return null;
 	return ReactDOM.createPortal(
 		<div
