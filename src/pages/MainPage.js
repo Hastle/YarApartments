@@ -12,11 +12,7 @@ import { IoIosSearch } from "react-icons/io";
 import DataAreaList from "../data/DataAreaList";
 
 function MainPage() {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
+	const { register, handleSubmit } = useForm();
 	const onSubmit = (data) => {
 		console.log(data);
 	};
