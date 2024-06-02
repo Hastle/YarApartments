@@ -26,9 +26,10 @@ function MainPage() {
 			>
 				<div className="mx-auto w-full max-w-screen-xl rounded-lg p-4 backdrop-blur-xl">
 					<form onSubmit={handleSubmit(onSubmit)}>
-						<div className="flex flex-wrap items-center justify-center space-x-2">
-							<Input />
+						<div className="flex flex-col flex-wrap items-center justify-center space-x-0 space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0">
+							<Input className="w-full md:w-2/3 lg:w-auto" />
 							<Select
+								className="w-full md:w-2/3 lg:w-auto"
 								name="area"
 								label={"Выбрать район"}
 								register={register}
@@ -39,8 +40,8 @@ function MainPage() {
 									</option>
 								))}
 							</Select>
-							<Input />
-							<Input />
+							<Input className="w-full md:w-2/3 lg:w-auto" />
+							<Input className="w-full md:w-2/3 lg:w-auto" />
 							<Button className="action-button">
 								<IoIosSearch size="24" />
 							</Button>
