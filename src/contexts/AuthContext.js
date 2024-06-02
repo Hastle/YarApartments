@@ -20,7 +20,8 @@ export const AuthProvider = ({ children }) => {
 		}
 
 		return () => {
-			localStorage.removeItem("token");
+			localStorage.clear();
+			// localStorage.removeItem("token");
 		};
 	}, []);
 
@@ -38,7 +39,8 @@ export const AuthProvider = ({ children }) => {
 		setToken(null);
 		setUser(null);
 		setRole(null);
-		localStorage.removeItem("token");
+		localStorage.clear();
+		// localStorage.removeItem("token");
 	};
 
 	return (
