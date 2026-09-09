@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import Input from "../ui/Input/Input";
 import Button from "../ui/Button/Button";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
+import Checkbox from "../ui/Checkbox/Checkbox";
 
 const RegisterForm = () => {
 	const { register, handleSubmit, reset } = useForm();
@@ -15,8 +17,10 @@ const RegisterForm = () => {
 			await authenticate.mutateAsync({ userData: data, isLogin: false });
 			reset();
 			navigate("/signin");
+			toast.success("Успешная регистрация!");
 		} catch (error) {
 			console.error("Registration failed:", error);
+			toast.error("Ошибка регистрации");
 		}
 	};
 
@@ -43,18 +47,26 @@ const RegisterForm = () => {
 						required
 						{...register("password")}
 					/>
+					<Checkbox
+						label={"Политика конфиденциальности"}
+						name="confidential"
+						register={register}
+						required
+						defaultChecked={true}
+					/>
 					<Button
 						type="submit"
-						className="primary-button mt-4"
+						className="primary-button"
 						disabled={isLoading}
 					>
 						{isLoading ? "Регистрация..." : "Зарегистрироваться"}
 					</Button>
-					{isError && (
-						<p className="mt-2 text-red-500">
-							Ошибка: {error.message}
-						</p>
-					)}
+					<p className="text-center">
+						У вас уже есть аккаунт?{" "}
+						<Link className="border-b border-black" to="/signin">
+							Вход
+						</Link>
+					</p>
 				</div>
 			</form>
 		</div>
