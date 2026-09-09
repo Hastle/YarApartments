@@ -9,7 +9,7 @@ function MainMenu() {
 	const toggleOpen = () => {
 		isOpen === true ? setIsOpen(false) : setIsOpen(true);
 	};
-	const { user, logout } = useContext(AuthContext);
+	const { user, role, logout } = useContext(AuthContext);
 	return (
 		<>
 			<button
@@ -58,12 +58,21 @@ function MainMenu() {
 					</>
 				) : (
 					<>
-						<Link
-							className="px-5 py-3 hover:bg-white-hover"
-							to="/profile"
-						>
-							Профиль
-						</Link>
+						{role === "ROLE_ADMIN" ? (
+							<Link
+								className="px-5 py-3 hover:bg-white-hover"
+								to="/dashboard"
+							>
+								Панель управления
+							</Link>
+						) : (
+							<Link
+								className="px-5 py-3 hover:bg-white-hover"
+								to="/profile"
+							>
+								Профиль
+							</Link>
+						)}
 						<Link
 							className="px-5 py-3 text-accent hover:bg-white-hover"
 							onClick={logout}
