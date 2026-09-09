@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MdCurrencyRuble } from "react-icons/md";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
-function Card({ id, address, price, imageUrl }) {
+function Card({ id, address, priceShort, imageUrl }) {
 	return (
 		<div className="relative">
 			<FavoriteButton className="absolute right-2 top-2 z-10" id={id} />
@@ -12,11 +12,11 @@ function Card({ id, address, price, imageUrl }) {
 					<img
 						src={imageUrl}
 						alt={address}
-						className="h-75 w-full object-cover lg:h-80"
+						className="h-80 w-full object-cover"
 					/>
-					<div className="flex-column p-4">
-						<div className="font-semi mb-4 flex items-center">
-							{price} <MdCurrencyRuble />
+					<div className="flex flex-col space-y-4 p-4">
+						<div className="font-semi flex items-center">
+							{priceShort} <MdCurrencyRuble /> / Сутки
 						</div>
 						<div className="color-grey overflow-hidden overflow-ellipsis whitespace-nowrap">
 							{address}
