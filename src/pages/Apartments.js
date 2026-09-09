@@ -1,62 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Filter from "../components/Filter/Filter";
 import Card from "../components/Card/Card";
-import useApartments from "../hooks/useApartments";
-import Loader from "../components/ui/Loader/Loader";
-import DataApartments from "../data/DataApartments";
 import MultiPlacemarkMap from "../components/Map/MultiPlacemarkMap";
-import useGeocoding from "../hooks/useGeocoding";
+import useFilterApartments from "../hooks/useFilterApartments";
+import { useFilter } from "../contexts/FilterContext";
 
 function Apartments() {
-	// const { apartments, isLoading, error } = useApartments();
-	//
-	// if (isLoading) return <Loader />;
-	// if (error) return <div>Произошла ошибка: {error.message}</div>;
-	// if (!apartments) return <div>Данные не доступны</div>;
-	// console.log(process.env.API_YANDEX_KEY);
+	const filteredApartments = useFilterApartments();
+	const { resetFilters } = useFilter();
 
-	const locations = DataApartments.map((apartment) => ({
+	const locations = filteredApartments.map((apartment) => ({
 		coordinates: [apartment.latitude, apartment.longitude],
 		hint: apartment.address,
-		balloon: `<Link><strong>${apartment.address}</strong><br/>${apartment.price} руб.</Link>`,
+		balloon: `<Link><strong>${apartment.address}</strong><br/>${apartment.priceShort} руб.</Link>`,
 	}));
 
-	// const result = useGeocoding(DataApartments[2].address);
-	// console.log(result);
+	useEffect(() => {
+		resetFilters();
+	}, []);
 
 	return (
-		<>
-			<div className="w-full lg:w-1/4">
+		<div className="flex w-full flex-col lg:flex-row">
+			<div className="w-full p-3 lg:w-1/4">
 				<Filter />
 			</div>
-			<div className="w-full lg:w-3/4">
-				<div className="p-3">
-					<h1 className="my-4">
-						Результаты поиска: найдено 6 объектов
-					</h1>
-					<div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
-						{DataApartments.map((apartment) => (
-							<div key={apartment.id}>
-								<Card
-									id={apartment.id}
-									address={apartment.address}
-									price={apartment.price}
-									imageUrl={apartment.image[0]}
-								/>
-							</div>
-						))}
-					</div>
-					<MultiPlacemarkMap
-						className="h-[400px] w-full py-3"
-						center={[57.622427, 39.887067]}
-						zoom={12}
-						controls={["fullscreenControl"]}
-						modules={["control.FullscreenControl"]}
-						locations={locations}
-					/>
+			<div className="w-full p-3 lg:w-3/4">
+				<h1 className="my-4">
+					Результаты поиска:{" "}
+					<span className="flex w-full sm:inline-flex sm:w-auto">
+						найдено {filteredApartments.length} объектов
+					</span>
+				</h1>
+				<div className="my-4 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+					{filteredApartments.map((apartment) => (
+						<div key={apartment.id}>
+							<Card
+								id={apartment.id}
+								address={apartment.address}
+								priceShort={apartment.priceShort}
+								imageUrl={apartment.image[0]}
+							/>
+						</div>
+					))}
 				</div>
+				<MultiPlacemarkMap
+					className="h-[400px] w-full py-3"
+					center={[57.622427, 39.887067]}
+					zoom={12}
+					controls={["fullscreenControl"]}
+					modules={["control.FullscreenControl"]}
+					locations={locations}
+				/>
 			</div>
-		</>
+		</div>
 	);
 }
 
