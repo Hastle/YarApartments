@@ -1,46 +1,27 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProfileCard from "../components/ProfileItem/ProfileItem";
-import { FaRegAddressCard, FaRegBuilding, FaRegBell } from "react-icons/fa";
-import { AiFillHeart } from "react-icons/ai";
-
 import { AuthContext } from "../contexts/AuthContext";
+import { BookingContext } from "../contexts/BookingContext";
+import PersonalInfo from "../components/Account/PersonalInfo";
+import Bookings from "../components/Account/Bookings";
+import Favorites from "../components/Account/Favorites";
+import Notifications from "../components/Account/Notifications";
+import { FaRegAddressCard, FaRegBell, FaRegBuilding } from "react-icons/fa";
+import { AiFillHeart } from "react-icons/ai";
 import DataApartments from "../data/DataApartments";
-import Card from "../components/Card/Card";
 
 function Profile() {
-	const { user, role } = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
+	const { bookings } = useContext(BookingContext);
 	const [selectedCard, setSelectedCard] = useState(null);
-	const [filteredApartments, setFilteredApartments] = useState([]);
 
 	const handleCardClick = (card) => {
 		setSelectedCard(card);
 	};
 
-	useEffect(() => {
-		const favoriteKeys = Object.keys(localStorage).filter((key) =>
-			key.startsWith("favorite_"),
-		);
-		const favoriteIdList = favoriteKeys.map((key) =>
-			key.replace("favorite_", ""),
-		);
-
-		const filtered = DataApartments.filter((apartment) =>
-			favoriteIdList.includes(apartment.id),
-		);
-
-		setFilteredApartments(filtered);
-		console.log(filtered);
-	}, [localStorage]);
-
 	return (
 		<div className="w-full p-3">
-			<div className="flex flex-col">
-				<h1>Профиль</h1>
-				<p>
-					{user?.sub}, {role}
-				</p>
-			</div>
-			<div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+			<div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:py-10">
 				<ProfileCard
 					icon={<FaRegAddressCard size={30} />}
 					title="Личные данные"
@@ -69,29 +50,11 @@ function Profile() {
 			{selectedCard && (
 				<div className="mt-3">
 					{selectedCard === "personal" && (
-						<div className="flex h-[300px] w-full bg-fuchsia-400"></div>
+						<PersonalInfo user={user} />
 					)}
-					{selectedCard === "bookings" && (
-						<div className="flex h-[300px] w-full bg-fuchsia-500"></div>
-					)}
-					{selectedCard === "favorite" && (
-						<div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
-							{filteredApartments.map((apartment) => (
-								<div key={apartment.id}>
-									<Card
-										id={apartment.id}
-										address={apartment.address}
-										price={apartment.price}
-										imageUrl={apartment.image[0]}
-									/>
-								</div>
-							))}
-						</div>
-					)}
-
-					{selectedCard === "notifications" && (
-						<div className="flex h-[300px] w-full bg-fuchsia-700"></div>
-					)}
+					{selectedCard === "bookings" && <Bookings />}
+					{selectedCard === "favorite" && <Favorites />}
+					{selectedCard === "notifications" && <Notifications />}
 				</div>
 			)}
 		</div>
