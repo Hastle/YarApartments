@@ -1,7 +1,7 @@
 input {
 	padding: 0.5rem 1rem !important;
 	@apply
-	bg-light
+	bg-transparent
 	px-2
 	py-4
 	rounded-lg
@@ -10,8 +10,25 @@ input {
 	outline-none
 	h-10
 }
+input:disabled {
+	@apply
+	cursor-not-allowed
+}
 input:-webkit-autofill {
 	box-shadow: 0 0 0 30px #f8f9fa inset !important;
+}
+
+textarea {
+	padding: 0.5rem 1rem !important;
+	@apply
+	bg-transparent
+	px-2
+	py-4
+	rounded-lg
+	border
+	border-black
+	outline-none
+	min-h-24
 }
 
 //@import "../../../styles/_mixins"

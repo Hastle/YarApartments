@@ -3,10 +3,23 @@ import styles from "./styles.module.sass";
 import { FaCheck } from "react-icons/fa";
 
 const Checkbox = forwardRef(
-	({ className = "", label, name, register, disabled, checked }, ref) => {
+	(
+		{
+			className = "",
+			label,
+			name,
+			register,
+			disabled,
+			required,
+			defaultChecked,
+		},
+		ref,
+	) => {
 		return (
 			<label
-				className={`${styles.checkbox_container} ${className} ${disabled ? styles.disabled : ""}`}
+				className={`${styles.checkbox_container} ${className} ${
+					disabled ? styles.disabled : ""
+				}`}
 			>
 				<input
 					type="checkbox"
@@ -14,7 +27,8 @@ const Checkbox = forwardRef(
 					name={name}
 					{...register(name)}
 					disabled={disabled}
-					checked={checked}
+					required={required}
+					defaultChecked={defaultChecked}
 					className={styles.checkbox_input}
 				/>
 				<span className={styles.checkbox_checkmark}>
@@ -25,17 +39,5 @@ const Checkbox = forwardRef(
 		);
 	},
 );
-export default Checkbox;
 
-// import React, { forwardRef } from "react";
-//
-// const Checkbox = forwardRef(({ label, ...rest }, ref) => {
-// 	return (
-// 		<label>
-// 			<input type="checkbox" ref={ref} {...rest} />
-// 			{label}
-// 		</label>
-// 	);
-// });
-//
-// export default Checkbox;
+export default Checkbox;

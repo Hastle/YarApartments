@@ -28,6 +28,19 @@ button {
 	hover:text-white
 	transition-all;
 }
+.danger-button {
+	@apply
+	bg-white
+	py-2.5
+	px-4
+	rounded-md
+	border
+	border-accent
+	text-accent
+	hover:bg-accent
+	hover:text-white
+	transition-all;
+}
 .action-button {
 	@apply
 	bg-green
