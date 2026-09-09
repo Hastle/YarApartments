@@ -5,9 +5,12 @@ import "dayjs/locale/ru";
 import Button from "../ui/Button/Button";
 import useOutsideAlerter from "../../hooks/useOutsideAlerter";
 
-const CalendarPicker = () => {
+const CalendarPicker = ({
+	className = "",
+	selectedRange,
+	setSelectedRange,
+}) => {
 	const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-	const [selectedRange, setSelectedRange] = useState(null);
 	const { ref, isOpen, setIsOpen } = useOutsideAlerter(isCalendarOpen);
 
 	const toggleCalendar = () => {
@@ -22,31 +25,37 @@ const CalendarPicker = () => {
 		if (!selectedRange) {
 			return "Выбрать даты";
 		} else if (selectedRange.start.isSame(selectedRange.end, "day")) {
-			return selectedRange.start.format("D MMMM YYYY");
+			return selectedRange.start.format("DD.MM.YYYY");
 		} else {
-			return `${selectedRange.start.format("D MMMM YYYY")} - ${selectedRange.end.format("D MMMM YYYY")}`;
+			return `${selectedRange.start.format(
+				"DD.MM.YYYY",
+			)} - ${selectedRange.end.format("DD.MM.YYYY")}`;
 		}
 	};
 
 	return (
-		<div>
-			<Button onClick={toggleCalendar} className="relative">
-				{renderSelectedRange()}
+		<Button
+			onClick={toggleCalendar}
+			className={`relative inline-flex h-10 items-center justify-center rounded-lg border border-black bg-light px-4 py-2 outline-none ${
+				className ? className : ""
+			}`}
+			disabled={isCalendarOpen}
+		>
+			{renderSelectedRange()}
 
-				{isOpen && (
-					<div
-						ref={ref}
-						className="absolute left-0 top-0 z-10 bg-light"
-						onClick={handleModalClick}
-					>
-						<Calendar
-							selectedRange={selectedRange}
-							setSelectedRange={setSelectedRange}
-						/>
-					</div>
-				)}
-			</Button>
-		</div>
+			{isOpen && (
+				<div
+					ref={ref}
+					className="absolute left--1/2 top-10 z-10 bg-light"
+					onClick={handleModalClick}
+				>
+					<Calendar
+						selectedRange={selectedRange}
+						setSelectedRange={setSelectedRange}
+					/>
+				</div>
+			)}
+		</Button>
 	);
 };
 
@@ -79,12 +88,22 @@ const Calendar = ({ selectedRange, setSelectedRange }) => {
 		}
 
 		if (!selectedRange) {
+			console.log("Новый диапазон:", { start: day, end: day });
 			setSelectedRange({ start: day, end: day });
 		} else if (day.isBefore(selectedRange.start, "day")) {
+			console.log("Изменение начальной даты:", {
+				start: day,
+				end: selectedRange.end,
+			});
 			setSelectedRange({ start: day, end: selectedRange.end });
 		} else if (day.isAfter(selectedRange.end, "day")) {
+			console.log("Изменение конечной даты:", {
+				start: selectedRange.start,
+				end: day,
+			});
 			setSelectedRange({ start: selectedRange.start, end: day });
 		} else {
+			console.log("Очистка диапазона");
 			setSelectedRange(null);
 		}
 	};
@@ -103,18 +122,10 @@ const Calendar = ({ selectedRange, setSelectedRange }) => {
 		const days = [];
 		let day = startDay;
 
-		while (day.isBefore(endDay, "day")) {
+		while (day.isBefore(endDay, "day") || day.isSame(endDay, "day")) {
 			days.push(day);
 			day = day.add(1, "day");
 		}
-
-		const isBetweenInclusive = (date, startDate, endDate) => {
-			return (
-				date.isSame(startDate) ||
-				date.isSame(endDate) ||
-				(date.isAfter(startDate) && date.isBefore(endDate))
-			);
-		};
 
 		const weeks = [];
 		for (let i = 0; i < days.length; i += 7) {
@@ -145,13 +156,33 @@ const Calendar = ({ selectedRange, setSelectedRange }) => {
 							day.isAfter(selectedRange.start, "day") &&
 							day.isBefore(hoveredDay, "day");
 
+						const isPastDay = day.isBefore(dayjs().startOf("day"));
+
+						const isOtherMonth =
+							day.month() !== currentMonth.month();
+
+						const isFutureDay = day.isAfter(dayjs(), "day");
+
+						const isPartOfSelectedRange =
+							selectedRange &&
+							isBetweenInclusive(
+								day,
+								selectedRange.start,
+								selectedRange.end,
+							);
+
 						return (
 							<td
 								key={dayIndex}
 								onClick={() => handleDayClick(day)}
 								onMouseEnter={() => handleDayHover(day)}
-								className={`cursor-pointer px-2 py-2 text-center ${
-									day.month() !== currentMonth.month()
+								className={`px-2 py-2 text-center ${
+									(isOtherMonth && !isPartOfSelectedRange) ||
+									isPastDay
+										? "cursor-not-allowed text-gray-400"
+										: "cursor-pointer"
+								} ${
+									isOtherMonth && !isPartOfSelectedRange
 										? "text-gray-400"
 										: (selectedRange &&
 												isSelectedRangeDay &&
@@ -166,8 +197,7 @@ const Calendar = ({ selectedRange, setSelectedRange }) => {
 													? "rounded bg-black text-white"
 													: "bg-grey/10")) ||
 											(isHoveredRange && "bg-blue-200") ||
-											(isInRange && "bg-blue-200") ||
-											""
+											(isInRange && "bg-blue-200")
 								}`}
 							>
 								{day.format("D")}
