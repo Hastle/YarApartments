@@ -1,24 +1,35 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Input from "../ui/Input/Input";
-import Checkbox from "../ui/Checkbox/Checkbox";
-import Button from "../ui/Button/Button";
+import { useFilter } from "../../contexts/FilterContext";
 import DataAreaList from "../../data/DataAreaList";
+import Input from "../ui/Input/Input";
 import Select from "../ui/Select/Select";
+import Button from "../ui/Button/Button";
+import Checkbox from "../ui/Checkbox/Checkbox";
 
 function Filter() {
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit, reset } = useForm();
+	const { updateFilters, resetFilters } = useFilter();
 
 	const onSubmit = (data) => {
-		console.log(data);
+		updateFilters(data);
+	};
+
+	const handleReset = () => {
+		reset();
+		resetFilters();
 	};
 
 	return (
-		<div className="p-3">
+		<div className="w-full p-3">
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex justify-between">
 					<div className="font-bold text-base">Фильтры</div>
-					<button className="font-bold text-base" type="reset">
+					<button
+						className="font-bold text-base"
+						type="reset"
+						onClick={handleReset}
+					>
 						Сбросить
 					</button>
 				</div>
@@ -38,20 +49,18 @@ function Filter() {
 					/>
 				</div>
 				<div className="my-4 font-bold text-base">Район</div>
-				<div className="flex space-x-4">
-					<Select
-						name="area"
-						label={"Выбрать район"}
-						register={register}
-						className={"w-full"}
-					>
-						{DataAreaList.map((area) => (
-							<option key={area.id} value={area.id}>
-								{area.name}
-							</option>
-						))}
-					</Select>
-				</div>
+				<Select
+					label="Выбрать район"
+					register={register("area")}
+					name="area"
+					className="w-full"
+				>
+					{DataAreaList.map((area) => (
+						<option key={area.id} value={area.name}>
+							{area.name}
+						</option>
+					))}
+				</Select>
 				<div className="my-4 font-bold text-base">
 					Количество комнат
 				</div>
@@ -66,15 +75,24 @@ function Filter() {
 						/>
 					))}
 				</div>
+				<div className="my-4 font-bold text-base">
+					Количество спальных мест
+				</div>
+				<div className="flex flex-wrap content-evenly">
+					{[1, 2, 3, 4].map((index) => (
+						<Checkbox
+							className="mr-4"
+							key={index}
+							label={String(index)}
+							name={`sleepingPlaces[${index}]`}
+							register={register}
+						/>
+					))}
+				</div>
 				<div className="my-4 font-bold text-base">Дополниaтельно</div>
 				<Checkbox
 					label={"Без залога"}
 					name="additional.noDeposit"
-					register={register}
-				/>
-				<Checkbox
-					label={"Без предоплаты"}
-					name="additional.noPrepayment"
 					register={register}
 				/>
 				<Checkbox
@@ -87,12 +105,14 @@ function Filter() {
 					name="additional.pets"
 					register={register}
 				/>
-				<Button
-					type="submit"
-					className={"primary-button mt-4 lg:w-full"}
-				>
-					Применить фильтры
-				</Button>
+				<div className="mt-4 flex justify-center">
+					<Button
+						type="submit"
+						className={"primary-button lg:w-full"}
+					>
+						Применить фильтры
+					</Button>
+				</div>
 			</form>
 		</div>
 	);
